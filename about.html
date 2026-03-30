@@ -4,15 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — Null Signal</title>
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=6" />
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <div class="scanlines"></div>
-  <div class="noise"></div>
-
-  <nav>
+  <nav class="site-nav">
     <div class="nav-logo">NULL<span>SIGNAL</span></div>
     <ul>
       <li><a href="index.html">HOME</a></li>
@@ -23,56 +20,65 @@
 
   <main class="page-main">
     <section class="page-hero">
-      <div class="page-label">// ABOUT THE GAME</div>
-      <h1>THE STORY SO FAR</h1>
+      <div class="page-hero__bg" aria-hidden="true">
+        <img src="images/section-industrial.jpg" alt="" width="2000" height="1333" decoding="async" />
+        <div class="page-hero__scrim"></div>
+      </div>
+      <div class="page-hero__content">
+        <p class="page-label">ABOUT THE GAME</p>
+        <h1>THE STORY SO FAR</h1>
+      </div>
     </section>
 
     <section class="story-section">
-      <div class="story-block">
+      <div class="story-block reveal">
         <div class="story-tag">TRANSMISSION 01 · ORIGIN</div>
         <h2>What is Null Signal?</h2>
         <p>Null Signal is a [genre] game about [core concept]. Add your game's description here — what makes it unique, what players will experience, and why it exists.</p>
-        <p>This is a placeholder. Replace this text with your friend's actual game description, lore, and story details.</p>
+        <p>Replace this copy with your real pitch and lore.</p>
       </div>
 
-      <div class="story-divider">
-        <span>// // // // // // // // //</span>
-      </div>
+      <div class="story-divider">// // //</div>
 
-      <div class="story-block">
+      <div class="story-block reveal">
         <div class="story-tag">TRANSMISSION 02 · GAMEPLAY</div>
-        <h2>How It Plays</h2>
-        <p>Describe the core gameplay loop here. What does the player actually do? What are the mechanics, the goals, the tension?</p>
+        <h2>How it plays</h2>
+        <p>Describe the core loop: what the player does moment to moment, what fails, what they are trying to save or expose.</p>
         <ul class="story-list">
-          <li>Feature one — describe it here</li>
-          <li>Feature two — describe it here</li>
-          <li>Feature three — describe it here</li>
+          <li>Mechanic or pillar one</li>
+          <li>Mechanic or pillar two</li>
+          <li>Mechanic or pillar three</li>
         </ul>
       </div>
 
-      <div class="story-divider">
-        <span>// // // // // // // // //</span>
-      </div>
+      <div class="story-divider">// // //</div>
 
-      <div class="story-block">
+      <div class="story-block reveal">
         <div class="story-tag">TRANSMISSION 03 · THE TEAM</div>
-        <h2>Who Made This</h2>
-        <p>A small team with a big vision. Add developer bios, studio info, or just a shoutout here.</p>
+        <h2>Who made this</h2>
+        <p>Studio name, collaborators, or a short note—whatever fits.</p>
         <div class="team-grid">
           <div class="team-card">
-            <div class="team-avatar">[ IMG ]</div>
-            <div class="team-name">DEVELOPER NAME</div>
-            <div class="team-role">Game Designer · Developer</div>
+            <div class="team-avatar">IMG</div>
+            <div class="team-name">NAME</div>
+            <div class="team-role">Role · Role</div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <div class="footer-inner">
-      <span class="footer-logo">NULL<span>SIGNAL</span></span>
-      <span class="footer-copy">© 2025 · All rights reserved</span>
+      <div class="footer-row">
+        <span class="footer-logo">NULL<span>SIGNAL</span></span>
+        <span class="footer-copy">© 2026 · All rights reserved</span>
+      </div>
+      <p class="footer-credits">
+        Header photo:
+        <a href="https://unsplash.com/photos/overgrown-industrial-ruins-with-rusty-metal-walkways-wJcK6IrLlPQ" rel="noopener noreferrer">Jakub Zerdzicki</a>
+        on <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash</a>.
+      </p>
     </div>
   </footer>
 

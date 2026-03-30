@@ -4,15 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Null Signal</title>
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=6" />
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <div class="scanlines"></div>
-  <div class="noise"></div>
-
-  <nav>
+  <nav class="site-nav">
     <div class="nav-logo">NULL<span>SIGNAL</span></div>
     <ul>
       <li><a href="index.html" class="active">HOME</a></li>
@@ -23,593 +20,114 @@
 
   <main>
     <section class="hero">
-
-      <!-- OVERGROWN CIRCUIT BOARD -->
-      <div class="hero-bg">
-        <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <!-- Deep vignette — edges consumed by darkness -->
-            <radialGradient id="vignette" cx="50%" cy="50%" r="62%">
-              <stop offset="0%" stop-color="transparent"/>
-              <stop offset="75%" stop-color="rgba(6,8,6,0.35)"/>
-              <stop offset="100%" stop-color="#060806"/>
-            </radialGradient>
-
-            <!-- Rust bloom gradients -->
-            <radialGradient id="rb1" cx="50%" cy="50%" r="50%">
-              <stop offset="0%"   stop-color="#a04010" stop-opacity="0.7"/>
-              <stop offset="40%"  stop-color="#7a2e08" stop-opacity="0.45"/>
-              <stop offset="100%" stop-color="#4a1a04" stop-opacity="0"/>
-            </radialGradient>
-            <radialGradient id="rb2" cx="50%" cy="50%" r="50%">
-              <stop offset="0%"   stop-color="#8c3c0c" stop-opacity="0.65"/>
-              <stop offset="45%"  stop-color="#5a2208" stop-opacity="0.35"/>
-              <stop offset="100%" stop-color="#3a1406" stop-opacity="0"/>
-            </radialGradient>
-            <radialGradient id="rb3" cx="50%" cy="50%" r="50%">
-              <stop offset="0%"   stop-color="#b44814" stop-opacity="0.55"/>
-              <stop offset="50%"  stop-color="#6e2a0a" stop-opacity="0.28"/>
-              <stop offset="100%" stop-color="#3a1406" stop-opacity="0"/>
-            </radialGradient>
-
-            <!-- Circuit trace glow -->
-            <filter id="glow-c" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur stdDeviation="2.8" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <!-- Plasma glow (stronger) -->
-            <filter id="glow-p" x="-40%" y="-40%" width="180%" height="180%">
-              <feGaussianBlur stdDeviation="3.5" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-
-            <!-- Organic displacement — makes vine paths look textured and alive -->
-            <filter id="organic" x="-8%" y="-8%" width="116%" height="116%">
-              <feTurbulence type="fractalNoise" baseFrequency="0.022 0.055"
-                numOctaves="4" seed="9" result="noise"/>
-              <feDisplacementMap in="SourceGraphic" in2="noise"
-                scale="5" xChannelSelector="R" yChannelSelector="G"/>
-            </filter>
-          </defs>
-
-          <!-- ════════════════════════════════════
-               LAYER 1 — PCB SURFACE
-               ════════════════════════════════════ -->
-
-          <!-- Board base -->
-          <rect width="1400" height="900" fill="#060a06"/>
-
-          <!-- Major circuit grid -->
-          <g stroke="#152012" stroke-width="0.7" fill="none" opacity="0.5">
-            <line x1="0" y1="120" x2="1400" y2="120"/><line x1="0" y1="280" x2="1400" y2="280"/>
-            <line x1="0" y1="440" x2="1400" y2="440"/><line x1="0" y1="600" x2="1400" y2="600"/>
-            <line x1="0" y1="760" x2="1400" y2="760"/>
-            <line x1="120" y1="0" x2="120" y2="900"/><line x1="280" y1="0" x2="280" y2="900"/>
-            <line x1="440" y1="0" x2="440" y2="900"/><line x1="600" y1="0" x2="600" y2="900"/>
-            <line x1="760" y1="0" x2="760" y2="900"/><line x1="920" y1="0" x2="920" y2="900"/>
-            <line x1="1080" y1="0" x2="1080" y2="900"/><line x1="1240" y1="0" x2="1240" y2="900"/>
-          </g>
-          <!-- Sub-grid -->
-          <g stroke="#0d1a0d" stroke-width="0.35" fill="none" opacity="0.4">
-            <line x1="0" y1="60" x2="1400" y2="60"/><line x1="0" y1="200" x2="1400" y2="200"/>
-            <line x1="0" y1="360" x2="1400" y2="360"/><line x1="0" y1="520" x2="1400" y2="520"/>
-            <line x1="0" y1="680" x2="1400" y2="680"/><line x1="0" y1="840" x2="1400" y2="840"/>
-            <line x1="60" y1="0" x2="60" y2="900"/><line x1="200" y1="0" x2="200" y2="900"/>
-            <line x1="360" y1="0" x2="360" y2="900"/><line x1="520" y1="0" x2="520" y2="900"/>
-            <line x1="680" y1="0" x2="680" y2="900"/><line x1="840" y1="0" x2="840" y2="900"/>
-            <line x1="1000" y1="0" x2="1000" y2="900"/><line x1="1160" y1="0" x2="1160" y2="900"/>
-            <line x1="1320" y1="0" x2="1320" y2="900"/>
-          </g>
-
-          <!-- Active circuit traces — still powered, glowing beneath the vines -->
-          <g fill="none" filter="url(#glow-c)">
-            <line x1="0"    y1="280" x2="440"  y2="280" stroke="#0a9462" stroke-width="1.8" opacity="0.6"/>
-            <line x1="760"  y1="280" x2="1400" y2="280" stroke="#0a9462" stroke-width="1.5" opacity="0.5"/>
-            <line x1="120"  y1="440" x2="600"  y2="440" stroke="#0a9462" stroke-width="1.8" opacity="0.55"/>
-            <line x1="920"  y1="120" x2="1400" y2="120" stroke="#0a9462" stroke-width="1.5" opacity="0.5"/>
-            <line x1="280"  y1="0"   x2="280"  y2="240" stroke="#0a9462" stroke-width="1.8" opacity="0.55"/>
-            <line x1="760"  y1="360" x2="760"  y2="900" stroke="#0a9462" stroke-width="1.4" opacity="0.42"/>
-            <line x1="600"  y1="440" x2="600"  y2="900" stroke="#0a9462" stroke-width="1.4" opacity="0.45"/>
-            <line x1="1080" y1="0"   x2="1080" y2="280" stroke="#0a9462" stroke-width="1.8" opacity="0.55"/>
-            <line x1="440"  y1="600" x2="920"  y2="600" stroke="#0a9462" stroke-width="1.4" opacity="0.42"/>
-          </g>
-          <!-- Plasma traces — cyan data still flowing -->
-          <g fill="none" filter="url(#glow-p)">
-            <line x1="440"  y1="0"   x2="440"  y2="120" stroke="#00c8e8" stroke-width="1.5" opacity="0.5"/>
-            <line x1="0"    y1="600" x2="240"  y2="600" stroke="#00c8e8" stroke-width="1.2" opacity="0.42"/>
-            <line x1="1080" y1="440" x2="1400" y2="440" stroke="#00c8e8" stroke-width="1.2" opacity="0.4"/>
-            <line x1="920"  y1="680" x2="1400" y2="680" stroke="#00c8e8" stroke-width="1"   opacity="0.36"/>
-          </g>
-
-          <!-- Solder nodes -->
-          <g fill="#0a9462" filter="url(#glow-c)" opacity="0.65">
-            <circle cx="280" cy="280" r="5.5"/><circle cx="440" cy="280" r="4.5"/>
-            <circle cx="600" cy="280" r="4.5"/><circle cx="760" cy="280" r="5.5"/>
-            <circle cx="120" cy="440" r="4.5"/><circle cx="600" cy="440" r="5.5"/>
-            <circle cx="1080" cy="280" r="5.5"/><circle cx="1080" cy="120" r="4.5"/>
-            <circle cx="280" cy="120" r="4.5"/><circle cx="760" cy="600" r="4.5"/>
-            <circle cx="440" cy="600" r="5.5"/><circle cx="920" cy="600" r="4.5"/>
-          </g>
-          <g fill="#00c8e8" filter="url(#glow-p)" opacity="0.48">
-            <circle cx="440" cy="120" r="4.5"/><circle cx="240" cy="600" r="4.5"/>
-            <circle cx="1080" cy="440" r="4.5"/><circle cx="920" cy="680" r="4.5"/>
-          </g>
-          <!-- VIA rings -->
-          <g fill="none" stroke="#0a9462" stroke-width="1.2" opacity="0.4">
-            <circle cx="280" cy="280" r="11"/><circle cx="600" cy="440" r="11"/>
-            <circle cx="1080" cy="280" r="10"/><circle cx="440" cy="600" r="10"/>
-          </g>
-
-          <!-- IC Chips — corroded outlines -->
-          <g fill="none" stroke="#1c2c18" stroke-width="1.5" opacity="0.7">
-            <!-- Chip A — left zone, partially covered by vines -->
-            <rect x="140" y="318" width="115" height="92" rx="3"/>
-            <line x1="140" y1="342" x2="108" y2="342" stroke="#152012" stroke-width="1"/>
-            <line x1="140" y1="364" x2="108" y2="364" stroke="#152012" stroke-width="1"/>
-            <line x1="140" y1="386" x2="108" y2="386" stroke="#152012" stroke-width="1"/>
-            <line x1="255" y1="342" x2="288" y2="342" stroke="#152012" stroke-width="1"/>
-            <line x1="255" y1="364" x2="288" y2="364" stroke="#152012" stroke-width="1"/>
-            <line x1="255" y1="386" x2="288" y2="386" stroke="#152012" stroke-width="1"/>
-            <!-- Chip B — right zone -->
-            <rect x="955" y="478" width="105" height="82" rx="3"/>
-            <line x1="955" y1="500" x2="922" y2="500" stroke="#152012" stroke-width="1"/>
-            <line x1="955" y1="522" x2="922" y2="522" stroke="#152012" stroke-width="1"/>
-            <line x1="1060" y1="500" x2="1092" y2="500" stroke="#152012" stroke-width="1"/>
-            <line x1="1060" y1="522" x2="1092" y2="522" stroke="#152012" stroke-width="1"/>
-            <!-- Chip C — bottom center -->
-            <rect x="476" y="648" width="95" height="72" rx="3"/>
-            <line x1="476" y1="666" x2="444" y2="666" stroke="#152012" stroke-width="1"/>
-            <line x1="476" y1="686" x2="444" y2="686" stroke="#152012" stroke-width="1"/>
-            <line x1="571" y1="666" x2="604" y2="666" stroke="#152012" stroke-width="1"/>
-            <line x1="571" y1="686" x2="604" y2="686" stroke="#152012" stroke-width="1"/>
-            <!-- Large processor — top right area -->
-            <rect x="850" y="85" width="145" height="118" rx="3"/>
-            <line x1="850" y1="108" x2="818" y2="108" stroke="#152012" stroke-width="1"/>
-            <line x1="850" y1="128" x2="818" y2="128" stroke="#152012" stroke-width="1"/>
-            <line x1="850" y1="148" x2="818" y2="148" stroke="#152012" stroke-width="1"/>
-            <line x1="850" y1="168" x2="818" y2="168" stroke="#152012" stroke-width="1"/>
-            <line x1="995" y1="108" x2="1028" y2="108" stroke="#152012" stroke-width="1"/>
-            <line x1="995" y1="128" x2="1028" y2="128" stroke="#152012" stroke-width="1"/>
-            <line x1="995" y1="148" x2="1028" y2="148" stroke="#152012" stroke-width="1"/>
-            <line x1="995" y1="168" x2="1028" y2="168" stroke="#152012" stroke-width="1"/>
-          </g>
-          <!-- Chip notches -->
-          <path d="M163,318 a11,11 0 0,1 22,0"  fill="#060a06" stroke="#1c2c18" stroke-width="1.5"/>
-          <path d="M977,478 a9,9 0 0,1 18,0"    fill="#060a06" stroke="#1c2c18" stroke-width="1.5"/>
-          <path d="M496,648 a8,8 0 0,1 16,0"    fill="#060a06" stroke="#1c2c18" stroke-width="1.5"/>
-          <path d="M872,85  a12,12 0 0,1 24,0"  fill="#060a06" stroke="#1c2c18" stroke-width="1.5"/>
-
-          <!-- Capacitors — top-view cylinders, left zone -->
-          <g fill="#0e180c" stroke="#1c2c18" stroke-width="1.2" opacity="0.75">
-            <circle cx="355" cy="155" r="16"/>
-            <circle cx="395" cy="155" r="16"/>
-            <circle cx="435" cy="155" r="16"/>
-          </g>
-          <g fill="none" stroke="#1e3018" stroke-width="0.8" opacity="0.5">
-            <circle cx="355" cy="155" r="10"/>
-            <circle cx="395" cy="155" r="10"/>
-            <circle cx="435" cy="155" r="10"/>
-          </g>
-          <!-- Caps right side -->
-          <g fill="#0e180c" stroke="#1c2c18" stroke-width="1.2" opacity="0.7">
-            <circle cx="1185" cy="560" r="14"/>
-            <circle cx="1220" cy="560" r="14"/>
-          </g>
-          <g fill="none" stroke="#1e3018" stroke-width="0.8" opacity="0.45">
-            <circle cx="1185" cy="560" r="9"/>
-            <circle cx="1220" cy="560" r="9"/>
-          </g>
-
-          <!-- ════════════════════════════════════
-               LAYER 2 — RUST BLOOMS
-               ════════════════════════════════════ -->
-
-          <!-- Corner blooms — heaviest staining -->
-          <ellipse cx="0"    cy="0"   rx="220" ry="165" fill="url(#rb1)"/>
-          <ellipse cx="1400" cy="900" rx="240" ry="180" fill="url(#rb2)"/>
-          <ellipse cx="1400" cy="0"   rx="180" ry="130" fill="url(#rb3)" opacity="0.85"/>
-          <ellipse cx="0"    cy="900" rx="190" ry="145" fill="url(#rb2)" opacity="0.8"/>
-
-          <!-- Secondary rust patches across board -->
-          <ellipse cx="680"  cy="820" rx="220" ry="65"  fill="url(#rb1)" opacity="0.55"/>
-          <ellipse cx="920"  cy="65"  rx="160" ry="52"  fill="url(#rb3)" opacity="0.6"/>
-          <ellipse cx="340"  cy="740" rx="90"  ry="58"  fill="url(#rb2)" opacity="0.6"/>
-          <ellipse cx="1140" cy="320" rx="75"  ry="48"  fill="url(#rb1)" opacity="0.5"/>
-          <!-- Rust streaks along edges -->
-          <rect x="0"    y="480" width="110" height="88" rx="6" fill="#8c3c0c" opacity="0.18"/>
-          <rect x="1300" y="360" width="100" height="62" rx="5" fill="#7a3210" opacity="0.16"/>
-
-          <!-- ════════════════════════════════════
-               LAYER 3 — VINES
-               The organic displacement filter is
-               applied per-group so tips/branches
-               deform independently.
-               ════════════════════════════════════ -->
-
-          <!--
-            Vine rendering method: 4 overlapping strokes per path
-              S1 — shadow   : width W,     color #0a1506,  opacity 0.95
-              S2 — dark body: width W-6,   color #1a2c0c
-              S3 — mid green: width W-12,  color #2c4618
-              S4 — highlight: width 4-5,   color #4c6e26
-            Plus organic displacement on the group.
-
-            Main trunk W = 24
-            Branch     W = 16
-            Tendril    W = 10
-          -->
-
-          <!-- ── LEFT MAIN TRUNK ── -->
-          <g filter="url(#organic)">
-            <path d="M-8,108 C 68,132 74,195 50,258 C 28,320 98,348 84,418 C 72,488 152,515 138,588 C 125,660 195,688 178,765 C 162,840 228,865 218,910"
-              stroke="#0a1506" stroke-width="24" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M-8,108 C 68,132 74,195 50,258 C 28,320 98,348 84,418 C 72,488 152,515 138,588 C 125,660 195,688 178,765 C 162,840 228,865 218,910"
-              stroke="#1a2c0c" stroke-width="18" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M-8,108 C 68,132 74,195 50,258 C 28,320 98,348 84,418 C 72,488 152,515 138,588 C 125,660 195,688 178,765 C 162,840 228,865 218,910"
-              stroke="#2c4618" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M-8,108 C 68,132 74,195 50,258 C 28,320 98,348 84,418 C 72,488 152,515 138,588 C 125,660 195,688 178,765 C 162,840 228,865 218,910"
-              stroke="#4c6e26" stroke-width="4"  fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.65"/>
-          </g>
-          <!-- Left trunk branches -->
-          <g filter="url(#organic)">
-            <!-- Branch L-A -->
-            <path d="M50,258 C 8,276 -14,315 -20,355"
-              stroke="#0a1506" stroke-width="16" fill="none" stroke-linecap="round"/>
-            <path d="M50,258 C 8,276 -14,315 -20,355"
-              stroke="#1a2c0c" stroke-width="11" fill="none" stroke-linecap="round"/>
-            <path d="M50,258 C 8,276 -14,315 -20,355"
-              stroke="#2c4618" stroke-width="6.5" fill="none" stroke-linecap="round"/>
-            <path d="M50,258 C 8,276 -14,315 -20,355"
-              stroke="#4c6e26" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
-            <!-- Branch L-B — drapes over chip A -->
-            <path d="M84,418 C 44,435 22,472 18,512"
-              stroke="#0a1506" stroke-width="16" fill="none" stroke-linecap="round"/>
-            <path d="M84,418 C 44,435 22,472 18,512"
-              stroke="#1a2c0c" stroke-width="11" fill="none" stroke-linecap="round"/>
-            <path d="M84,418 C 44,435 22,472 18,512"
-              stroke="#2c4618" stroke-width="6.5" fill="none" stroke-linecap="round"/>
-            <path d="M84,418 C 44,435 22,472 18,512"
-              stroke="#4c6e26" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
-            <!-- Branch L-B sub-tendril -->
-            <path d="M22,472 C -12,482 -22,510 -18,540"
-              stroke="#0a1506" stroke-width="10" fill="none" stroke-linecap="round"/>
-            <path d="M22,472 C -12,482 -22,510 -18,540"
-              stroke="#1a2c0c" stroke-width="7"  fill="none" stroke-linecap="round"/>
-            <path d="M22,472 C -12,482 -22,510 -18,540"
-              stroke="#2c4618" stroke-width="4"  fill="none" stroke-linecap="round"/>
-            <path d="M22,472 C -12,482 -22,510 -18,540"
-              stroke="#4c6e26" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.55"/>
-            <!-- Branch L-C -->
-            <path d="M138,588 C 98,608 74,648 68,690"
-              stroke="#0a1506" stroke-width="16" fill="none" stroke-linecap="round"/>
-            <path d="M138,588 C 98,608 74,648 68,690"
-              stroke="#1a2c0c" stroke-width="11" fill="none" stroke-linecap="round"/>
-            <path d="M138,588 C 98,608 74,648 68,690"
-              stroke="#2c4618" stroke-width="6.5" fill="none" stroke-linecap="round"/>
-            <path d="M138,588 C 98,608 74,648 68,690"
-              stroke="#4c6e26" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
-            <!-- Branch L-D — creeping right toward center -->
-            <path d="M178,765 C 138,782 115,820 112,862"
-              stroke="#0a1506" stroke-width="14" fill="none" stroke-linecap="round"/>
-            <path d="M178,765 C 138,782 115,820 112,862"
-              stroke="#1a2c0c" stroke-width="9.5" fill="none" stroke-linecap="round"/>
-            <path d="M178,765 C 138,782 115,820 112,862"
-              stroke="#2c4618" stroke-width="5.5" fill="none" stroke-linecap="round"/>
-            <path d="M178,765 C 138,782 115,820 112,862"
-              stroke="#4c6e26" stroke-width="2"   fill="none" stroke-linecap="round" opacity="0.55"/>
-          </g>
-
-          <!-- ── LEFT SECONDARY VINE — from top, between trunk and chips ── -->
-          <g filter="url(#organic)">
-            <path d="M208,0 C 196,55 215,102 198,158 C 182,212 205,258 190,315 C 175,368 198,412 182,465"
-              stroke="#0a1506" stroke-width="18" fill="none" stroke-linecap="round"/>
-            <path d="M208,0 C 196,55 215,102 198,158 C 182,212 205,258 190,315 C 175,368 198,412 182,465"
-              stroke="#1a2c0c" stroke-width="13" fill="none" stroke-linecap="round"/>
-            <path d="M208,0 C 196,55 215,102 198,158 C 182,212 205,258 190,315 C 175,368 198,412 182,465"
-              stroke="#2c4618" stroke-width="8"  fill="none" stroke-linecap="round"/>
-            <path d="M208,0 C 196,55 215,102 198,158 C 182,212 205,258 190,315 C 175,368 198,412 182,465"
-              stroke="#4c6e26" stroke-width="3"  fill="none" stroke-linecap="round" opacity="0.6"/>
-            <!-- Tendrils right -->
-            <path d="M215,102 C 248,115 265,140 272,172"
-              stroke="#0a1506" stroke-width="10" fill="none" stroke-linecap="round"/>
-            <path d="M215,102 C 248,115 265,140 272,172"
-              stroke="#1a2c0c" stroke-width="7"  fill="none" stroke-linecap="round"/>
-            <path d="M215,102 C 248,115 265,140 272,172"
-              stroke="#2c4618" stroke-width="4"  fill="none" stroke-linecap="round"/>
-            <path d="M215,102 C 248,115 265,140 272,172"
-              stroke="#4c6e26" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.55"/>
-            <path d="M198,158 C 168,172 152,198 148,230"
-              stroke="#0a1506" stroke-width="10" fill="none" stroke-linecap="round"/>
-            <path d="M198,158 C 168,172 152,198 148,230"
-              stroke="#1a2c0c" stroke-width="7"  fill="none" stroke-linecap="round"/>
-            <path d="M198,158 C 168,172 152,198 148,230"
-              stroke="#2c4618" stroke-width="4"  fill="none" stroke-linecap="round"/>
-            <path d="M198,158 C 168,172 152,198 148,230"
-              stroke="#4c6e26" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.55"/>
-          </g>
-
-          <!-- ── RIGHT MAIN TRUNK ── -->
-          <g filter="url(#organic)">
-            <path d="M1410,175 C 1355,200 1372,262 1384,325 C 1396,390 1345,420 1358,492 C 1370,565 1318,592 1332,668 C 1345,742 1295,768 1308,845 C 1315,878 1288,898 1275,915"
-              stroke="#0a1506" stroke-width="24" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M1410,175 C 1355,200 1372,262 1384,325 C 1396,390 1345,420 1358,492 C 1370,565 1318,592 1332,668 C 1345,742 1295,768 1308,845 C 1315,878 1288,898 1275,915"
-              stroke="#1a2c0c" stroke-width="18" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M1410,175 C 1355,200 1372,262 1384,325 C 1396,390 1345,420 1358,492 C 1370,565 1318,592 1332,668 C 1345,742 1295,768 1308,845 C 1315,878 1288,898 1275,915"
-              stroke="#2c4618" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M1410,175 C 1355,200 1372,262 1384,325 C 1396,390 1345,420 1358,492 C 1370,565 1318,592 1332,668 C 1345,742 1295,768 1308,845 C 1315,878 1288,898 1275,915"
-              stroke="#4c6e26" stroke-width="4"  fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.65"/>
-          </g>
-          <!-- Right trunk branches -->
-          <g filter="url(#organic)">
-            <!-- Branch R-A — extends right off screen -->
-            <path d="M1384,325 C 1420,342 1440,378 1448,415"
-              stroke="#0a1506" stroke-width="16" fill="none" stroke-linecap="round"/>
-            <path d="M1384,325 C 1420,342 1440,378 1448,415"
-              stroke="#1a2c0c" stroke-width="11" fill="none" stroke-linecap="round"/>
-            <path d="M1384,325 C 1420,342 1440,378 1448,415"
-              stroke="#2c4618" stroke-width="6.5" fill="none" stroke-linecap="round"/>
-            <path d="M1384,325 C 1420,342 1440,378 1448,415"
-              stroke="#4c6e26" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
-            <!-- Branch R-B — curls toward chip B -->
-            <path d="M1358,492 C 1316,510 1296,548 1288,590"
-              stroke="#0a1506" stroke-width="16" fill="none" stroke-linecap="round"/>
-            <path d="M1358,492 C 1316,510 1296,548 1288,590"
-              stroke="#1a2c0c" stroke-width="11" fill="none" stroke-linecap="round"/>
-            <path d="M1358,492 C 1316,510 1296,548 1288,590"
-              stroke="#2c4618" stroke-width="6.5" fill="none" stroke-linecap="round"/>
-            <path d="M1358,492 C 1316,510 1296,548 1288,590"
-              stroke="#4c6e26" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
-            <!-- Branch R-B tendril -->
-            <path d="M1296,548 C 1330,562 1348,595 1356,628"
-              stroke="#0a1506" stroke-width="10" fill="none" stroke-linecap="round"/>
-            <path d="M1296,548 C 1330,562 1348,595 1356,628"
-              stroke="#1a2c0c" stroke-width="7"  fill="none" stroke-linecap="round"/>
-            <path d="M1296,548 C 1330,562 1348,595 1356,628"
-              stroke="#2c4618" stroke-width="4"  fill="none" stroke-linecap="round"/>
-            <path d="M1296,548 C 1330,562 1348,595 1356,628"
-              stroke="#4c6e26" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.55"/>
-            <!-- Branch R-C -->
-            <path d="M1332,668 C 1372,685 1392,720 1400,758"
-              stroke="#0a1506" stroke-width="14" fill="none" stroke-linecap="round"/>
-            <path d="M1332,668 C 1372,685 1392,720 1400,758"
-              stroke="#1a2c0c" stroke-width="9.5" fill="none" stroke-linecap="round"/>
-            <path d="M1332,668 C 1372,685 1392,720 1400,758"
-              stroke="#2c4618" stroke-width="5.5" fill="none" stroke-linecap="round"/>
-            <path d="M1332,668 C 1372,685 1392,720 1400,758"
-              stroke="#4c6e26" stroke-width="2"   fill="none" stroke-linecap="round" opacity="0.55"/>
-          </g>
-
-          <!-- ── TOP-EDGE TENDRILS — drooping down ── -->
-          <g filter="url(#organic)">
-            <!-- Tendril T1 -->
-            <path d="M425,0 C 412,55 432,105 416,162 C 400,215 422,262 406,318"
-              stroke="#0a1506" stroke-width="18" fill="none" stroke-linecap="round"/>
-            <path d="M425,0 C 412,55 432,105 416,162 C 400,215 422,262 406,318"
-              stroke="#1a2c0c" stroke-width="13" fill="none" stroke-linecap="round"/>
-            <path d="M425,0 C 412,55 432,105 416,162 C 400,215 422,262 406,318"
-              stroke="#2c4618" stroke-width="8"  fill="none" stroke-linecap="round"/>
-            <path d="M425,0 C 412,55 432,105 416,162 C 400,215 422,262 406,318"
-              stroke="#4c6e26" stroke-width="3"  fill="none" stroke-linecap="round" opacity="0.6"/>
-            <!-- T1 side branch -->
-            <path d="M432,105 C 462,118 480,145 488,178"
-              stroke="#0a1506" stroke-width="10" fill="none" stroke-linecap="round"/>
-            <path d="M432,105 C 462,118 480,145 488,178"
-              stroke="#1a2c0c" stroke-width="7"  fill="none" stroke-linecap="round"/>
-            <path d="M432,105 C 462,118 480,145 488,178"
-              stroke="#2c4618" stroke-width="4"  fill="none" stroke-linecap="round"/>
-            <path d="M432,105 C 462,118 480,145 488,178"
-              stroke="#4c6e26" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.55"/>
-
-            <!-- Tendril T2 -->
-            <path d="M715,0 C 702,48 720,95 705,148 C 690,200 710,248 694,302"
-              stroke="#0a1506" stroke-width="16" fill="none" stroke-linecap="round"/>
-            <path d="M715,0 C 702,48 720,95 705,148 C 690,200 710,248 694,302"
-              stroke="#1a2c0c" stroke-width="11" fill="none" stroke-linecap="round"/>
-            <path d="M715,0 C 702,48 720,95 705,148 C 690,200 710,248 694,302"
-              stroke="#2c4618" stroke-width="6.5" fill="none" stroke-linecap="round"/>
-            <path d="M715,0 C 702,48 720,95 705,148 C 690,200 710,248 694,302"
-              stroke="#4c6e26" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
-            <path d="M705,148 C 732,162 748,188 755,218"
-              stroke="#0a1506" stroke-width="10" fill="none" stroke-linecap="round"/>
-            <path d="M705,148 C 732,162 748,188 755,218"
-              stroke="#1a2c0c" stroke-width="7"  fill="none" stroke-linecap="round"/>
-            <path d="M705,148 C 732,162 748,188 755,218"
-              stroke="#2c4618" stroke-width="4"  fill="none" stroke-linecap="round"/>
-            <path d="M705,148 C 732,162 748,188 755,218"
-              stroke="#4c6e26" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.55"/>
-
-            <!-- Tendril T3 -->
-            <path d="M992,0 C 980,44 998,88 984,138 C 970,185 988,232 972,282"
-              stroke="#0a1506" stroke-width="14" fill="none" stroke-linecap="round"/>
-            <path d="M992,0 C 980,44 998,88 984,138 C 970,185 988,232 972,282"
-              stroke="#1a2c0c" stroke-width="9.5" fill="none" stroke-linecap="round"/>
-            <path d="M992,0 C 980,44 998,88 984,138 C 970,185 988,232 972,282"
-              stroke="#2c4618" stroke-width="5.5" fill="none" stroke-linecap="round"/>
-            <path d="M992,0 C 980,44 998,88 984,138 C 970,185 988,232 972,282"
-              stroke="#4c6e26" stroke-width="2"   fill="none" stroke-linecap="round" opacity="0.55"/>
-          </g>
-
-          <!-- ── BOTTOM-EDGE GROWTH ── -->
-          <g filter="url(#organic)">
-            <!-- Growth B1 -->
-            <path d="M320,900 C 335,858 318,818 332,778 C 345,738 326,700 342,658"
-              stroke="#0a1506" stroke-width="18" fill="none" stroke-linecap="round"/>
-            <path d="M320,900 C 335,858 318,818 332,778 C 345,738 326,700 342,658"
-              stroke="#1a2c0c" stroke-width="13" fill="none" stroke-linecap="round"/>
-            <path d="M320,900 C 335,858 318,818 332,778 C 345,738 326,700 342,658"
-              stroke="#2c4618" stroke-width="8"  fill="none" stroke-linecap="round"/>
-            <path d="M320,900 C 335,858 318,818 332,778 C 345,738 326,700 342,658"
-              stroke="#4c6e26" stroke-width="3"  fill="none" stroke-linecap="round" opacity="0.6"/>
-            <path d="M318,818 C 285,830 268,858 262,890"
-              stroke="#0a1506" stroke-width="10" fill="none" stroke-linecap="round"/>
-            <path d="M318,818 C 285,830 268,858 262,890"
-              stroke="#1a2c0c" stroke-width="7"  fill="none" stroke-linecap="round"/>
-            <path d="M318,818 C 285,830 268,858 262,890"
-              stroke="#2c4618" stroke-width="4"  fill="none" stroke-linecap="round"/>
-            <path d="M318,818 C 285,830 268,858 262,890"
-              stroke="#4c6e26" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.55"/>
-
-            <!-- Growth B2 -->
-            <path d="M875,900 C 888,860 872,822 885,782 C 898,742 880,705 895,662"
-              stroke="#0a1506" stroke-width="16" fill="none" stroke-linecap="round"/>
-            <path d="M875,900 C 888,860 872,822 885,782 C 898,742 880,705 895,662"
-              stroke="#1a2c0c" stroke-width="11" fill="none" stroke-linecap="round"/>
-            <path d="M875,900 C 888,860 872,822 885,782 C 898,742 880,705 895,662"
-              stroke="#2c4618" stroke-width="6.5" fill="none" stroke-linecap="round"/>
-            <path d="M875,900 C 888,860 872,822 885,782 C 898,742 880,705 895,662"
-              stroke="#4c6e26" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
-            <path d="M872,822 C 840,835 825,862 818,895"
-              stroke="#0a1506" stroke-width="10" fill="none" stroke-linecap="round"/>
-            <path d="M872,822 C 840,835 825,862 818,895"
-              stroke="#1a2c0c" stroke-width="7"  fill="none" stroke-linecap="round"/>
-            <path d="M872,822 C 840,835 825,862 818,895"
-              stroke="#2c4618" stroke-width="4"  fill="none" stroke-linecap="round"/>
-            <path d="M872,822 C 840,835 825,862 818,895"
-              stroke="#4c6e26" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.55"/>
-          </g>
-
-          <!-- ── CROSS-CREEPER — crawls left-to-right across the middle ── -->
-          <g filter="url(#organic)">
-            <path d="M0,505 C 95,490 188,512 285,498 C 382,484 465,508 555,495 C 620,486 665,502 708,496"
-              stroke="#0a1506" stroke-width="14" fill="none" stroke-linecap="round"/>
-            <path d="M0,505 C 95,490 188,512 285,498 C 382,484 465,508 555,495 C 620,486 665,502 708,496"
-              stroke="#1a2c0c" stroke-width="9.5" fill="none" stroke-linecap="round"/>
-            <path d="M0,505 C 95,490 188,512 285,498 C 382,484 465,508 555,495 C 620,486 665,502 708,496"
-              stroke="#2c4618" stroke-width="5.5" fill="none" stroke-linecap="round"/>
-            <path d="M0,505 C 95,490 188,512 285,498 C 382,484 465,508 555,495 C 620,486 665,502 708,496"
-              stroke="#4c6e26" stroke-width="2"   fill="none" stroke-linecap="round" opacity="0.55"/>
-            <!-- Right-side cross creeper -->
-            <path d="M1400,578 C 1308,562 1215,584 1122,570 C 1030,556 950,578 880,564"
-              stroke="#0a1506" stroke-width="14" fill="none" stroke-linecap="round"/>
-            <path d="M1400,578 C 1308,562 1215,584 1122,570 C 1030,556 950,578 880,564"
-              stroke="#1a2c0c" stroke-width="9.5" fill="none" stroke-linecap="round"/>
-            <path d="M1400,578 C 1308,562 1215,584 1122,570 C 1030,556 950,578 880,564"
-              stroke="#2c4618" stroke-width="5.5" fill="none" stroke-linecap="round"/>
-            <path d="M1400,578 C 1308,562 1215,584 1122,570 C 1030,556 950,578 880,564"
-              stroke="#4c6e26" stroke-width="2"   fill="none" stroke-linecap="round" opacity="0.55"/>
-          </g>
-
-          <!-- ════════════════════════════════════
-               LAYER 4 — LEAVES
-               Proper leaf silhouettes at every node
-               ════════════════════════════════════ -->
-          <g>
-            <!-- Left trunk nodes — filled leaf silhouettes -->
-            <!-- Node at 258: leaf pointing left -->
-            <path d="M50,258 C 36,248 22,240 18,250 C 14,260 28,272 50,258 Z" fill="#1e3810"/>
-            <path d="M50,258 C 36,248 22,240 18,250 C 14,260 28,272 50,258 Z" fill="#2c4e18" opacity="0.5"/>
-            <!-- Node at 418 -->
-            <path d="M84,418 C 65,406 48,400 45,412 C 42,424 62,436 84,418 Z" fill="#1e3810"/>
-            <path d="M84,418 C 65,406 48,400 45,412 C 42,424 62,436 84,418 Z" fill="#2c4e18" opacity="0.5"/>
-            <!-- Node at 588 -->
-            <path d="M138,588 C 118,576 100,570 98,582 C 96,594 118,606 138,588 Z" fill="#1e3810"/>
-            <path d="M138,588 C 118,576 100,570 98,582 C 96,594 118,606 138,588 Z" fill="#2c4e18" opacity="0.5"/>
-            <!-- Node at 765 -->
-            <path d="M178,765 C 158,754 140,748 138,760 C 136,772 158,784 178,765 Z" fill="#1e3810"/>
-            <path d="M178,765 C 158,754 140,748 138,760 C 136,772 158,784 178,765 Z" fill="#2c4e18" opacity="0.5"/>
-            <!-- Additional small leaves on branches -->
-            <ellipse cx="50"  cy="258" rx="14" ry="7" fill="#1e3810" transform="rotate(-42 50 258)"  opacity="0.8"/>
-            <ellipse cx="84"  cy="418" rx="13" ry="6.5" fill="#1e3810" transform="rotate(-28 84 418)"  opacity="0.8"/>
-            <ellipse cx="138" cy="588" rx="14" ry="7" fill="#1e3810" transform="rotate(-38 138 588)" opacity="0.8"/>
-            <ellipse cx="178" cy="765" rx="12" ry="6" fill="#1e3810" transform="rotate(-22 178 765)" opacity="0.8"/>
-            <!-- Left secondary nodes -->
-            <ellipse cx="215" cy="102" rx="11" ry="5.5" fill="#1e3810" transform="rotate(20 215 102)"  opacity="0.75"/>
-            <ellipse cx="198" cy="158" rx="10" ry="5"   fill="#1a3510" transform="rotate(12 198 158)"  opacity="0.75"/>
-            <ellipse cx="205" cy="258" rx="10" ry="5"   fill="#1e3810" transform="rotate(-15 205 258)" opacity="0.75"/>
-
-            <!-- Right trunk nodes -->
-            <ellipse cx="1384" cy="325" rx="14" ry="7"   fill="#1e3810" transform="rotate(40 1384 325)"  opacity="0.82"/>
-            <ellipse cx="1358" cy="492" rx="13" ry="6.5" fill="#1e3810" transform="rotate(28 1358 492)"  opacity="0.82"/>
-            <ellipse cx="1332" cy="668" rx="14" ry="7"   fill="#1e3810" transform="rotate(35 1332 668)"  opacity="0.82"/>
-            <path d="M1358,492 C 1374,480 1388,472 1392,484 C 1396,496 1380,508 1358,492 Z" fill="#1e3810"/>
-            <path d="M1358,492 C 1374,480 1388,472 1392,484 C 1396,496 1380,508 1358,492 Z" fill="#2c4e18" opacity="0.5"/>
-
-            <!-- Top tendril nodes -->
-            <ellipse cx="432"  cy="105" rx="11" ry="5.5" fill="#1e3810" transform="rotate(-18 432 105)"  opacity="0.78"/>
-            <ellipse cx="416"  cy="162" rx="10" ry="5"   fill="#1a3510" transform="rotate(-10 416 162)"  opacity="0.78"/>
-            <ellipse cx="705"  cy="148" rx="11" ry="5.5" fill="#1e3810" transform="rotate(15 705 148)"   opacity="0.78"/>
-            <ellipse cx="984"  cy="138" rx="10" ry="5"   fill="#1e3810" transform="rotate(-12 984 138)"  opacity="0.75"/>
-
-            <!-- Bottom growth nodes -->
-            <ellipse cx="332"  cy="778" rx="11" ry="5.5" fill="#1e3810" transform="rotate(-20 332 778)"  opacity="0.8"/>
-            <ellipse cx="885"  cy="782" rx="11" ry="5.5" fill="#1e3810" transform="rotate(18 885 782)"   opacity="0.8"/>
-
-            <!-- Scattered fallen leaves on the board surface -->
-            <ellipse cx="620"  cy="340" rx="9"  ry="4.5" fill="#1a3010" transform="rotate(52 620 340)"   opacity="0.55"/>
-            <ellipse cx="1045" cy="480" rx="8"  ry="4"   fill="#172c0e" transform="rotate(-38 1045 480)"  opacity="0.52"/>
-            <ellipse cx="780"  cy="720" rx="9"  ry="4.5" fill="#1a3010" transform="rotate(28 780 720)"   opacity="0.55"/>
-            <ellipse cx="500"  cy="215" rx="7.5" ry="3.8" fill="#172c0e" transform="rotate(-22 500 215)"  opacity="0.5"/>
-            <ellipse cx="1165" cy="680" rx="8"  ry="4"   fill="#1a3010" transform="rotate(45 1165 680)"  opacity="0.5"/>
-            <ellipse cx="350"  cy="545" rx="7"  ry="3.5" fill="#172c0e" transform="rotate(-60 350 545)"  opacity="0.48"/>
-          </g>
-
-          <!-- ════════════════════════════════════
-               LAYER 5 — OVERLAYS & ATMOSPHERE
-               ════════════════════════════════════ -->
-
-          <!-- Vignette — edges consumed -->
-          <rect x="0" y="0" width="1400" height="900" fill="url(#vignette)"/>
-
-          <!-- Central heartbeat — the board still lives -->
-          <ellipse cx="700" cy="450" rx="380" ry="270" fill="rgba(10,148,98,0.028)">
-            <animate attributeName="rx" values="380;425;380" dur="5s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="1;2;1" dur="5s" repeatCount="indefinite"/>
-          </ellipse>
-        </svg>
+      <!-- Real photos: vintage PCB under a rust + vine photograph, blended in-browser -->
+      <div class="hero-stack" aria-hidden="true">
+        <img
+          class="hero-stack__base"
+          src="images/hero-circuit-old.jpg"
+          alt=""
+          width="2000"
+          height="1333"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <img
+          class="hero-stack__vine"
+          src="images/hero-vines-rust.jpg"
+          alt=""
+          width="2000"
+          height="1333"
+          decoding="async"
+        />
+        <div class="hero-stack__scrim"></div>
       </div>
 
-      <div class="hero-content">
-        <div class="glitch-container">
-          <h1 class="glitch" data-text="NULL SIGNAL">NULL SIGNAL</h1>
+      <div class="hero-inner">
+        <p class="hero-kicker">COMING SOON · PC</p>
+        <h1 class="hero-title">NULL SIGNAL</h1>
+        <p class="hero-lead">
+          The connection is severed. The mission is not. A game buried under rust, roots, and dead hardware.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="about.html">LEARN MORE</a>
+          <a class="btn btn-ghost" href="media.html">MEDIA</a>
         </div>
-        <p class="tagline">The connection is severed. The mission is not.</p>
-        <div class="hero-sub">
-          <span class="tag">COMING SOON</span>
-          <span class="divider">///</span>
-          <span class="platform">PC</span>
-        </div>
-        <div class="cta-group">
-          <a href="about.html" class="btn btn-primary">LEARN MORE</a>
-          <a href="media.html" class="btn btn-ghost">SEE SCREENSHOTS</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat"><span class="stat-num">00</span><span class="stat-label">DAYS UNTIL LAUNCH</span></div>
-          <span class="stat-sep">//</span>
-          <div class="stat"><span class="stat-num">???</span><span class="stat-label">CLASSIFIED</span></div>
-          <span class="stat-sep">//</span>
-          <div class="stat"><span class="stat-num">1</span><span class="stat-label">SIGNAL LOST</span></div>
-        </div>
+        <p class="hero-caption">
+          Hero uses real photography: an old wired circuit board beneath a separate shot of vines on rusted metal, multiplied together so the organic layer reads over the hardware.
+        </p>
       </div>
     </section>
 
-    <section class="features">
-      <div class="section-header">
-        <span class="section-tag">// CORE SYSTEMS</span>
+    <section class="intro">
+      <div class="intro-inner">
+        <h2>NATURE VS. MACHINE</h2>
+        <p>
+          This site is built around <strong>actual photographs</strong>—not drawn vines or fake rust. You can swap any file in <code>images/</code> for your own shots of decayed gear and overgrowth.
+        </p>
       </div>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="feature-icon">⬡</div>
-          <h3>DEEP INFILTRATION</h3>
-          <p>Navigate hostile networks with zero margin for error. Every decision leaves a trace.</p>
+    </section>
+
+    <section class="photo-band">
+      <article class="photo-split reveal">
+        <div class="photo-split__pic">
+          <img
+            src="images/section-circuit.jpg"
+            alt="Close-up of a complex circuit board with components and traces"
+            width="2000"
+            height="1333"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">◈</div>
-          <h3>SIGNAL DECAY</h3>
-          <p>Your comms are compromised. Piece together the truth from fragmented transmissions.</p>
+        <div class="photo-split__body">
+          <p class="photo-split__label">COMPONENT LAYER</p>
+          <h3>Real boards, real corrosion</h3>
+          <p>
+            Dense PCBs and solder—straight from the camera. This is the “computer” half of the mood: metal, glass, and traces that used to mean something.
+          </p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">⬙</div>
-          <h3>ADAPTIVE ENEMIES</h3>
-          <p>Systems learn. Patterns evolve. What worked once won't work twice.</p>
+      </article>
+
+      <article class="photo-split reveal">
+        <div class="photo-split__pic">
+          <img
+            src="images/section-industrial.jpg"
+            alt="Overgrown industrial structure with rusty metal walkways"
+            width="2000"
+            height="1333"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
-      </div>
+        <div class="photo-split__body">
+          <p class="photo-split__label">RECLAIMED METAL</p>
+          <h3>Rust where walkways used to be</h3>
+          <p>
+            Industrial ruins overtaken by growth—another real frame that sells the same fantasy: systems left running until the world grew through them.
+          </p>
+        </div>
+      </article>
     </section>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <div class="footer-inner">
-      <span class="footer-logo">NULL<span>SIGNAL</span></span>
-      <span class="footer-copy">© 2025 · All rights reserved</span>
+      <div class="footer-row">
+        <span class="footer-logo">NULL<span>SIGNAL</span></span>
+        <span class="footer-copy">© 2026 · All rights reserved</span>
+      </div>
+      <p class="footer-credits">
+        Photography:
+        <a href="https://unsplash.com/photos/close-up-of-an-old-electronic-circuit-board-with-wires-oFTsjMfZ76A" rel="noopener noreferrer">Zulfugar Karimov</a>
+        (vintage wired board),
+        <a href="https://unsplash.com/photos/a-rusted-iron-gate-with-vines-growing-on-it-RxGDNOHkepA" rel="noopener noreferrer">Eric Prouzet</a>
+        (rusted gate with vines),
+        <a href="https://unsplash.com/photos/overgrown-industrial-ruins-with-rusty-metal-walkways-wJcK6IrLlPQ" rel="noopener noreferrer">Jakub Zerdzicki</a>
+        (overgrown industrial ruins),
+        <a href="https://unsplash.com/photos/close-up-of-a-complex-electronic-circuit-board-with-many-components-76wMkjguUEA" rel="noopener noreferrer">Akshat Sharma</a>
+        (detailed circuit board). Licensed under the
+        <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>.
+      </p>
     </div>
   </footer>
 

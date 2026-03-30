@@ -4,15 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Media — Null Signal</title>
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=6" />
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <div class="scanlines"></div>
-  <div class="noise"></div>
-
-  <nav>
+  <nav class="site-nav">
     <div class="nav-logo">NULL<span>SIGNAL</span></div>
     <ul>
       <li><a href="index.html">HOME</a></li>
@@ -23,60 +20,69 @@
 
   <main class="page-main">
     <section class="page-hero">
-      <div class="page-label">// PRESS KIT · MEDIA</div>
-      <h1>SCREENSHOTS &amp; MEDIA</h1>
+      <div class="page-hero__bg" aria-hidden="true">
+        <img src="images/section-circuit.jpg" alt="" width="2000" height="1333" decoding="async" />
+        <div class="page-hero__scrim"></div>
+      </div>
+      <div class="page-hero__content">
+        <p class="page-label">PRESS · MEDIA</p>
+        <h1>SCREENSHOTS &amp; STILLS</h1>
+      </div>
     </section>
 
     <section class="media-section">
-      <div class="media-note">
-        [ Replace the placeholder boxes below with actual screenshots once you have them.<br/>
-        Drop image files into an <code>img/</code> folder and update the <code>src</code> attributes. ]
-      </div>
+      <p class="media-note">
+        Below mixes <strong>reference photography</strong> (same assets as the home page) with room for real game captures. Replace any <code>&lt;img src&gt;</code> under <code>images/</code> with your own files, or add a dedicated <code>screenshots/</code> folder.
+      </p>
 
-      <div class="screenshot-grid">
-        <div class="screenshot-item large">
-          <div class="screenshot-placeholder">
-            <span>SCREENSHOT 01</span>
-            <span class="ph-sub">1920 × 1080</span>
+      <div class="shot-grid">
+        <figure class="shot shot--wide reveal">
+          <a class="shot-link" href="images/hero-circuit-old.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="images/hero-circuit-old.jpg" alt="Vintage electronic circuit board with wires" width="2000" height="1333" loading="lazy" decoding="async" />
+          </a>
+          <figcaption>Reference · Old wired board (replace with key art or trailer still)</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <a class="shot-link" href="images/hero-vines-rust.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="images/hero-vines-rust.jpg" alt="Rusted metal gate with green vines" width="2000" height="1333" loading="lazy" decoding="async" />
+          </a>
+          <figcaption>Reference · Vines on rust (mood / texture)</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <a class="shot-link" href="images/section-industrial.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="images/section-industrial.jpg" alt="Overgrown industrial ruins and rusted walkways" width="2000" height="1333" loading="lazy" decoding="async" />
+          </a>
+          <figcaption>Reference · Overgrown industrial</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <a class="shot-link" href="images/section-circuit.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="images/section-circuit.jpg" alt="Complex circuit board macro" width="2000" height="1333" loading="lazy" decoding="async" />
+          </a>
+          <figcaption>Reference · Board detail</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <div class="shot-link shot-placeholder">
+            <span>YOUR SCREENSHOT</span>
           </div>
-          <div class="screenshot-caption">Caption for screenshot 01</div>
-        </div>
-        <div class="screenshot-item">
-          <div class="screenshot-placeholder">
-            <span>SCREENSHOT 02</span>
-            <span class="ph-sub">1920 × 1080</span>
-          </div>
-          <div class="screenshot-caption">Caption for screenshot 02</div>
-        </div>
-        <div class="screenshot-item">
-          <div class="screenshot-placeholder">
-            <span>SCREENSHOT 03</span>
-            <span class="ph-sub">1920 × 1080</span>
-          </div>
-          <div class="screenshot-caption">Caption for screenshot 03</div>
-        </div>
-        <div class="screenshot-item">
-          <div class="screenshot-placeholder">
-            <span>SCREENSHOT 04</span>
-            <span class="ph-sub">1920 × 1080</span>
-          </div>
-          <div class="screenshot-caption">Caption for screenshot 04</div>
-        </div>
-        <div class="screenshot-item">
-          <div class="screenshot-placeholder">
-            <span>SCREENSHOT 05</span>
-            <span class="ph-sub">1920 × 1080</span>
-          </div>
-          <div class="screenshot-caption">Caption for screenshot 05</div>
-        </div>
+          <figcaption>Placeholder slot — drop a 16:9 PNG or JPG here</figcaption>
+        </figure>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <div class="footer-inner">
-      <span class="footer-logo">NULL<span>SIGNAL</span></span>
-      <span class="footer-copy">© 2025 · All rights reserved</span>
+      <div class="footer-row">
+        <span class="footer-logo">NULL<span>SIGNAL</span></span>
+        <span class="footer-copy">© 2026 · All rights reserved</span>
+      </div>
+      <p class="footer-credits">
+        Stills shown are reference photos from Unsplash contributors—see home page footer for full credits. Replace with in-game media when ready.
+      </p>
     </div>
   </footer>
 
