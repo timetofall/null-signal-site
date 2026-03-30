@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Null Signal</title>
-  <link rel="stylesheet" href="style.css?v=3" />
+  <link rel="stylesheet" href="style.css?v=4" />
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -30,12 +30,32 @@
           <defs>
             <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
               <stop offset="0%" stop-color="transparent"/>
-              <stop offset="100%" stop-color="#07090a"/>
+              <stop offset="100%" stop-color="#060806"/>
             </radialGradient>
+            <radialGradient id="rustBloom1" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#9b3e0a" stop-opacity="0.55"/>
+              <stop offset="60%" stop-color="#6b2b0a" stop-opacity="0.28"/>
+              <stop offset="100%" stop-color="#6b2b0a" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="rustBloom2" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#7a3210" stop-opacity="0.5"/>
+              <stop offset="55%" stop-color="#5a2208" stop-opacity="0.22"/>
+              <stop offset="100%" stop-color="#5a2208" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="glow-circuit">
+              <feGaussianBlur stdDeviation="2.5" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="glow-plasma">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
           </defs>
 
-          <!-- Major grid lines -->
-          <g stroke="#162012" stroke-width="1" fill="none" opacity="0.85">
+          <!-- ═══ CIRCUIT BOARD — dimmer beneath the growth ═══ -->
+
+          <!-- Major grid -->
+          <g stroke="#162012" stroke-width="0.8" fill="none" opacity="0.55">
             <line x1="0" y1="120" x2="1400" y2="120"/>
             <line x1="0" y1="280" x2="1400" y2="280"/>
             <line x1="0" y1="440" x2="1400" y2="440"/>
@@ -52,7 +72,7 @@
           </g>
 
           <!-- Sub-grid -->
-          <g stroke="#0f1910" stroke-width="0.5" fill="none" opacity="0.6">
+          <g stroke="#0e1a0e" stroke-width="0.4" fill="none" opacity="0.45">
             <line x1="0" y1="60" x2="1400" y2="60"/>
             <line x1="0" y1="200" x2="1400" y2="200"/>
             <line x1="0" y1="360" x2="1400" y2="360"/>
@@ -70,29 +90,29 @@
             <line x1="1320" y1="0" x2="1320" y2="900"/>
           </g>
 
-          <!-- Active circuit TRACES (glowing green) -->
-          <g fill="none" opacity="0.5">
-            <line x1="0" y1="280" x2="440" y2="280" stroke="#1a8c5a" stroke-width="2"/>
-            <line x1="760" y1="280" x2="1400" y2="280" stroke="#1a8c5a" stroke-width="1.5"/>
-            <line x1="120" y1="440" x2="600" y2="440" stroke="#1a8c5a" stroke-width="2"/>
-            <line x1="920" y1="120" x2="1400" y2="120" stroke="#1a8c5a" stroke-width="1.5"/>
-            <line x1="280" y1="0" x2="280" y2="240" stroke="#1a8c5a" stroke-width="2"/>
-            <line x1="760" y1="360" x2="760" y2="900" stroke="#1a8c5a" stroke-width="1.5"/>
-            <line x1="600" y1="440" x2="600" y2="900" stroke="#1a8c5a" stroke-width="1.5"/>
-            <line x1="1080" y1="0" x2="1080" y2="280" stroke="#1a8c5a" stroke-width="2"/>
-            <line x1="440" y1="600" x2="920" y2="600" stroke="#1a8c5a" stroke-width="1.5"/>
+          <!-- Active circuit traces — glowing green, still powered -->
+          <g fill="none" filter="url(#glow-circuit)">
+            <line x1="0" y1="280" x2="440" y2="280" stroke="#0a9c62" stroke-width="1.8" opacity="0.55"/>
+            <line x1="760" y1="280" x2="1400" y2="280" stroke="#0a9c62" stroke-width="1.5" opacity="0.45"/>
+            <line x1="120" y1="440" x2="600" y2="440" stroke="#0a9c62" stroke-width="1.8" opacity="0.5"/>
+            <line x1="920" y1="120" x2="1400" y2="120" stroke="#0a9c62" stroke-width="1.5" opacity="0.45"/>
+            <line x1="280" y1="0" x2="280" y2="240" stroke="#0a9c62" stroke-width="1.8" opacity="0.5"/>
+            <line x1="760" y1="360" x2="760" y2="900" stroke="#0a9c62" stroke-width="1.5" opacity="0.4"/>
+            <line x1="600" y1="440" x2="600" y2="900" stroke="#0a9c62" stroke-width="1.5" opacity="0.42"/>
+            <line x1="1080" y1="0" x2="1080" y2="280" stroke="#0a9c62" stroke-width="1.8" opacity="0.5"/>
+            <line x1="440" y1="600" x2="920" y2="600" stroke="#0a9c62" stroke-width="1.5" opacity="0.4"/>
           </g>
 
-          <!-- Plasma/data traces (blue) -->
-          <g fill="none" opacity="0.45">
-            <line x1="440" y1="0" x2="440" y2="120" stroke="#00c8ff" stroke-width="1.5"/>
-            <line x1="0" y1="600" x2="240" y2="600" stroke="#00c8ff" stroke-width="1.2"/>
-            <line x1="1080" y1="440" x2="1400" y2="440" stroke="#00c8ff" stroke-width="1.2"/>
-            <line x1="920" y1="680" x2="1400" y2="680" stroke="#00c8ff" stroke-width="1"/>
+          <!-- Plasma/data traces — cyan -->
+          <g fill="none" filter="url(#glow-plasma)">
+            <line x1="440" y1="0" x2="440" y2="120" stroke="#00d4ff" stroke-width="1.5" opacity="0.45"/>
+            <line x1="0" y1="600" x2="240" y2="600" stroke="#00d4ff" stroke-width="1.2" opacity="0.4"/>
+            <line x1="1080" y1="440" x2="1400" y2="440" stroke="#00d4ff" stroke-width="1.2" opacity="0.38"/>
+            <line x1="920" y1="680" x2="1400" y2="680" stroke="#00d4ff" stroke-width="1" opacity="0.35"/>
           </g>
 
-          <!-- Solder nodes (circuit trace junctions) -->
-          <g fill="#1a8c5a" opacity="0.65">
+          <!-- Solder nodes -->
+          <g fill="#0a9c62" opacity="0.6" filter="url(#glow-circuit)">
             <circle cx="280" cy="280" r="5"/><circle cx="440" cy="280" r="4"/>
             <circle cx="600" cy="280" r="4"/><circle cx="760" cy="280" r="5"/>
             <circle cx="120" cy="440" r="4"/><circle cx="600" cy="440" r="5"/>
@@ -100,24 +120,20 @@
             <circle cx="280" cy="120" r="4"/><circle cx="760" cy="600" r="4"/>
             <circle cx="440" cy="600" r="5"/><circle cx="920" cy="600" r="4"/>
           </g>
-          <g fill="#00c8ff" opacity="0.5">
+          <g fill="#00d4ff" opacity="0.45" filter="url(#glow-plasma)">
             <circle cx="440" cy="120" r="4"/><circle cx="240" cy="600" r="4"/>
             <circle cx="1080" cy="440" r="4"/><circle cx="920" cy="680" r="4"/>
           </g>
 
-          <!-- VIA rings (through-holes) -->
-          <g fill="none" stroke="#1a8c5a" stroke-width="1" opacity="0.45">
+          <!-- VIA rings -->
+          <g fill="none" stroke="#0a9c62" stroke-width="1" opacity="0.38">
             <circle cx="280" cy="280" r="10"/><circle cx="600" cy="440" r="10"/>
             <circle cx="1080" cy="280" r="9"/><circle cx="760" cy="280" r="8"/>
             <circle cx="440" cy="600" r="9"/>
           </g>
-          <g fill="none" stroke="#00c8ff" stroke-width="0.8" opacity="0.35">
-            <circle cx="440" cy="120" r="8"/><circle cx="1080" cy="440" r="8"/>
-          </g>
 
-          <!-- IC CHIP outlines -->
-          <g fill="none" stroke="#1c2a18" stroke-width="1.5" opacity="0.75">
-            <!-- Chip 1 (top left area) -->
+          <!-- IC chip outlines -->
+          <g fill="none" stroke="#1c2a18" stroke-width="1.5" opacity="0.65">
             <rect x="145" y="320" width="110" height="90" rx="2"/>
             <line x1="145" y1="345" x2="115" y2="345" stroke="#162012" stroke-width="1"/>
             <line x1="145" y1="368" x2="115" y2="368" stroke="#162012" stroke-width="1"/>
@@ -125,73 +141,210 @@
             <line x1="255" y1="345" x2="285" y2="345" stroke="#162012" stroke-width="1"/>
             <line x1="255" y1="368" x2="285" y2="368" stroke="#162012" stroke-width="1"/>
             <line x1="255" y1="391" x2="285" y2="391" stroke="#162012" stroke-width="1"/>
-            <!-- Chip 2 (right side) -->
             <rect x="960" y="480" width="100" height="80" rx="2"/>
             <line x1="960" y1="502" x2="930" y2="502" stroke="#162012" stroke-width="1"/>
             <line x1="960" y1="524" x2="930" y2="524" stroke="#162012" stroke-width="1"/>
             <line x1="1060" y1="502" x2="1090" y2="502" stroke="#162012" stroke-width="1"/>
             <line x1="1060" y1="524" x2="1090" y2="524" stroke="#162012" stroke-width="1"/>
-            <!-- Chip 3 (bottom) -->
             <rect x="480" y="650" width="90" height="70" rx="2"/>
             <line x1="480" y1="668" x2="450" y2="668" stroke="#162012" stroke-width="1"/>
             <line x1="480" y1="688" x2="450" y2="688" stroke="#162012" stroke-width="1"/>
             <line x1="570" y1="668" x2="600" y2="668" stroke="#162012" stroke-width="1"/>
             <line x1="570" y1="688" x2="600" y2="688" stroke="#162012" stroke-width="1"/>
           </g>
-          <!-- IC notch marks -->
-          <path d="M168,320 a10,10 0 0,1 20,0" fill="#0c100e" stroke="#1c2a18" stroke-width="1.5"/>
-          <path d="M982,480 a8,8 0 0,1 16,0" fill="#0c100e" stroke="#1c2a18" stroke-width="1.5"/>
-          <path d="M500,650 a7,7 0 0,1 14,0" fill="#0c100e" stroke="#1c2a18" stroke-width="1.5"/>
+          <path d="M168,320 a10,10 0 0,1 20,0" fill="#0a0d0a" stroke="#1c2a18" stroke-width="1.5"/>
+          <path d="M982,480 a8,8 0 0,1 16,0" fill="#0a0d0a" stroke="#1c2a18" stroke-width="1.5"/>
+          <path d="M500,650 a7,7 0 0,1 14,0" fill="#0a0d0a" stroke="#1c2a18" stroke-width="1.5"/>
 
-          <!-- RUST PATCHES -->
-          <ellipse cx="120" cy="80" rx="80" ry="55" fill="#8b3a0e" opacity="0.2"/>
-          <ellipse cx="1300" cy="800" rx="90" ry="60" fill="#7a3210" opacity="0.18"/>
-          <ellipse cx="1180" cy="160" rx="55" ry="35" fill="#6b2b0a" opacity="0.15"/>
-          <ellipse cx="200" cy="740" rx="65" ry="40" fill="#7a3210" opacity="0.15"/>
-          <rect x="0" y="550" width="90" height="65" rx="4" fill="#8b3a0e" opacity="0.1"/>
+          <!-- ═══ RUST BLOOMS — heavy corrosion ═══ -->
+          <ellipse cx="60" cy="65" rx="110" ry="75" fill="url(#rustBloom1)"/>
+          <ellipse cx="1330" cy="820" rx="120" ry="85" fill="url(#rustBloom2)"/>
+          <ellipse cx="1200" cy="140" rx="80" ry="55" fill="url(#rustBloom1)" opacity="0.7"/>
+          <ellipse cx="180" cy="760" rx="90" ry="60" fill="url(#rustBloom2)" opacity="0.75"/>
+          <ellipse cx="700" cy="880" rx="200" ry="50" fill="#5a2208" opacity="0.18"/>
+          <!-- Rust streaks -->
+          <rect x="0" y="530" width="130" height="80" rx="6" fill="#8b3a0e" opacity="0.14"/>
+          <rect x="1310" y="400" width="90" height="55" rx="4" fill="#7a3210" opacity="0.12"/>
+          <ellipse cx="840" cy="50" rx="70" ry="35" fill="#6b2b0a" opacity="0.2"/>
 
-          <!-- VINE/ROOT PATHS -->
-          <g fill="none" opacity="0.32">
-            <!-- Left main vine -->
-            <path d="M0,180 Q45,210 38,270 Q30,330 80,360 Q115,385 105,440 Q95,500 135,535 Q155,555 145,620 Q135,685 175,730 Q190,760 180,840 Q175,870 200,900"
-              stroke="#2d4a1e" stroke-width="3" stroke-linecap="round"/>
-            <path d="M38,270 Q-8,285 0,310" stroke="#2d4a1e" stroke-width="2" stroke-linecap="round"/>
-            <path d="M80,360 Q45,380 35,405" stroke="#3d6328" stroke-width="2" stroke-linecap="round"/>
-            <path d="M105,440 Q70,460 60,490" stroke="#2d4a1e" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M135,535 Q95,550 82,575" stroke="#3d6328" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M145,620 Q110,635 100,665" stroke="#2d4a1e" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- ═══ VINES — dominant, crawling over everything ═══ -->
 
-            <!-- Right vine -->
-            <path d="M1400,280 Q1360,310 1370,370 Q1380,430 1340,460 Q1310,480 1325,550 Q1340,620 1310,660 Q1295,685 1310,760"
-              stroke="#2d4a1e" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M1370,370 Q1410,388 1420,415" stroke="#2d4a1e" stroke-width="2" stroke-linecap="round"/>
-            <path d="M1340,460 Q1380,475 1400,500" stroke="#3d6328" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M1325,550 Q1365,560 1380,585" stroke="#2d4a1e" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- LEFT MAIN VINE — heavy trunk from top-left -->
+          <g fill="none">
+            <!-- Shadow/depth layer -->
+            <path d="M-15,140 Q60,175 52,258 Q44,342 100,375 Q138,398 126,458 Q115,520 158,556 Q182,575 172,645 Q162,715 204,760 Q222,788 210,870 Q206,892 228,910"
+              stroke="#0e1e08" stroke-width="9" stroke-linecap="round" opacity="0.9"/>
+            <!-- Main stem -->
+            <path d="M-15,140 Q60,175 52,258 Q44,342 100,375 Q138,398 126,458 Q115,520 158,556 Q182,575 172,645 Q162,715 204,760 Q222,788 210,870 Q206,892 228,910"
+              stroke="#243818" stroke-width="6" stroke-linecap="round" opacity="0.95"/>
+            <!-- Highlight vein -->
+            <path d="M-15,140 Q60,175 52,258 Q44,342 100,375 Q138,398 126,458 Q115,520 158,556 Q182,575 172,645 Q162,715 204,760 Q222,788 210,870 Q206,892 228,910"
+              stroke="#4c6e30" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
 
-            <!-- Top tendrils -->
-            <path d="M520,0 Q535,40 510,80 Q488,118 515,150" stroke="#2d4a1e" stroke-width="2" stroke-linecap="round"/>
-            <path d="M900,0 Q885,45 910,85 Q930,118 910,155" stroke="#2d4a1e" stroke-width="2" stroke-linecap="round"/>
-            <path d="M1200,0 Q1210,35 1195,70" stroke="#2d4a1e" stroke-width="1.8" stroke-linecap="round"/>
+            <!-- Branch 1 -->
+            <path d="M52,258 Q-5,278 -18,315" stroke="#1e3212" stroke-width="4.5" stroke-linecap="round" opacity="0.9"/>
+            <path d="M52,258 Q-5,278 -18,315" stroke="#364e22" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+            <!-- Branch 2 -->
+            <path d="M100,375 Q55,398 42,428" stroke="#1e3212" stroke-width="4" stroke-linecap="round" opacity="0.88"/>
+            <path d="M100,375 Q55,398 42,428" stroke="#364e22" stroke-width="1.8" stroke-linecap="round" opacity="0.45"/>
+            <!-- Branch 3 — draping over chip 1 -->
+            <path d="M126,458 Q88,475 74,508 Q62,538 80,560" stroke="#1e3212" stroke-width="3.5" stroke-linecap="round" opacity="0.88"/>
+            <path d="M126,458 Q88,475 74,508 Q62,538 80,560" stroke="#364e22" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+            <!-- Sub-branch from branch 3 -->
+            <path d="M74,508 Q42,515 28,540" stroke="#1e3212" stroke-width="2.8" stroke-linecap="round" opacity="0.8"/>
+            <!-- Branch 4 -->
+            <path d="M158,556 Q118,572 104,602" stroke="#1e3212" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
+            <path d="M158,556 Q118,572 104,602" stroke="#4c6e30" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+            <!-- Branch 5 — long creeper toward center -->
+            <path d="M172,645 Q132,658 118,692 Q108,720 130,745" stroke="#1e3212" stroke-width="3.2" stroke-linecap="round" opacity="0.82"/>
+            <path d="M172,645 Q132,658 118,692 Q108,720 130,745" stroke="#364e22" stroke-width="1.4" stroke-linecap="round" opacity="0.42"/>
+          </g>
 
-            <!-- Bottom growth -->
-            <path d="M320,900 Q330,860 308,820 Q288,785 315,750" stroke="#2d4a1e" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M1040,900 Q1055,860 1040,820 Q1028,785 1055,750" stroke="#2d4a1e" stroke-width="2" stroke-linecap="round"/>
+          <!-- LEFT SECONDARY VINE — starts from top edge -->
+          <g fill="none">
+            <path d="M220,0 Q205,45 225,88 Q242,128 218,168 Q198,200 220,242 Q238,275 215,315 Q194,350 210,395"
+              stroke="#1a2e12" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+            <path d="M220,0 Q205,45 225,88 Q242,128 218,168 Q198,200 220,242 Q238,275 215,315 Q194,350 210,395"
+              stroke="#364e22" stroke-width="2" stroke-linecap="round" opacity="0.42"/>
+            <!-- Tendrils -->
+            <path d="M225,88 Q258,96 272,115" stroke="#1e3212" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+            <path d="M218,168 Q188,178 175,198" stroke="#1e3212" stroke-width="2.5" stroke-linecap="round" opacity="0.78"/>
+            <path d="M220,242 Q255,250 268,272" stroke="#1e3212" stroke-width="2.5" stroke-linecap="round" opacity="0.75"/>
+          </g>
 
-            <!-- Vine bud nodes -->
-            <circle cx="105" cy="440" r="4" fill="#3d6328" opacity="0.55"/>
-            <circle cx="175" cy="730" r="3.5" fill="#3d6328" opacity="0.5"/>
-            <circle cx="1340" cy="460" r="4" fill="#3d6328" opacity="0.55"/>
-            <circle cx="515" cy="150" r="3.5" fill="#3d6328" opacity="0.5"/>
-            <circle cx="910" cy="155" r="3.5" fill="#3d6328" opacity="0.5"/>
+          <!-- RIGHT MAIN VINE — heavy from top-right -->
+          <g fill="none">
+            <!-- Shadow -->
+            <path d="M1415,220 Q1368,255 1378,328 Q1388,402 1346,438 Q1316,462 1332,535 Q1348,608 1316,652 Q1300,678 1318,755 Q1330,800 1310,870"
+              stroke="#0e1e08" stroke-width="8.5" stroke-linecap="round" opacity="0.9"/>
+            <!-- Main stem -->
+            <path d="M1415,220 Q1368,255 1378,328 Q1388,402 1346,438 Q1316,462 1332,535 Q1348,608 1316,652 Q1300,678 1318,755 Q1330,800 1310,870"
+              stroke="#243818" stroke-width="5.5" stroke-linecap="round" opacity="0.92"/>
+            <path d="M1415,220 Q1368,255 1378,328 Q1388,402 1346,438 Q1316,462 1332,535 Q1348,608 1316,652 Q1300,678 1318,755 Q1330,800 1310,870"
+              stroke="#4c6e30" stroke-width="2" stroke-linecap="round" opacity="0.38"/>
+            <!-- Branches right -->
+            <path d="M1378,328 Q1415,346 1430,375" stroke="#1e3212" stroke-width="4" stroke-linecap="round" opacity="0.88"/>
+            <path d="M1378,328 Q1415,346 1430,375" stroke="#364e22" stroke-width="1.7" stroke-linecap="round" opacity="0.42"/>
+            <path d="M1346,438 Q1388,455 1406,482" stroke="#1e3212" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
+            <path d="M1332,535 Q1372,548 1390,575" stroke="#1e3212" stroke-width="3.2" stroke-linecap="round" opacity="0.82"/>
+            <path d="M1316,652 Q1355,665 1372,692" stroke="#1e3212" stroke-width="3" stroke-linecap="round" opacity="0.78"/>
+            <!-- Long tendril curling toward chip 2 -->
+            <path d="M1346,438 Q1310,450 1295,480 Q1282,508 1295,535" stroke="#1a2e12" stroke-width="3.5" stroke-linecap="round" opacity="0.8"/>
+            <path d="M1346,438 Q1310,450 1295,480 Q1282,508 1295,535" stroke="#364e22" stroke-width="1.4" stroke-linecap="round" opacity="0.38"/>
+          </g>
+
+          <!-- RIGHT SECONDARY VINE — bottom-right corner -->
+          <g fill="none">
+            <path d="M1400,680 Q1360,660 1372,622 Q1382,586 1352,560 Q1326,538 1340,502"
+              stroke="#1a2e12" stroke-width="4.5" stroke-linecap="round" opacity="0.85"/>
+            <path d="M1400,680 Q1360,660 1372,622 Q1382,586 1352,560 Q1326,538 1340,502"
+              stroke="#4c6e30" stroke-width="1.8" stroke-linecap="round" opacity="0.38"/>
+          </g>
+
+          <!-- TOP EDGE TENDRILS — drooping down from top -->
+          <g fill="none">
+            <path d="M480,0 Q462,48 478,92 Q492,132 468,172 Q448,208 472,245"
+              stroke="#1a2e12" stroke-width="4" stroke-linecap="round" opacity="0.82"/>
+            <path d="M480,0 Q462,48 478,92 Q492,132 468,172 Q448,208 472,245"
+              stroke="#4c6e30" stroke-width="1.6" stroke-linecap="round" opacity="0.38"/>
+            <path d="M478,92 Q512,104 528,126" stroke="#1e3212" stroke-width="2.8" stroke-linecap="round" opacity="0.78"/>
+            <path d="M468,172 Q504,183 518,205" stroke="#1e3212" stroke-width="2.4" stroke-linecap="round" opacity="0.72"/>
+
+            <path d="M880,0 Q862,48 884,90 Q902,128 880,165 Q860,198 882,238"
+              stroke="#1a2e12" stroke-width="3.8" stroke-linecap="round" opacity="0.8"/>
+            <path d="M880,0 Q862,48 884,90 Q902,128 880,165 Q860,198 882,238"
+              stroke="#4c6e30" stroke-width="1.5" stroke-linecap="round" opacity="0.36"/>
+            <path d="M884,90 Q916,104 930,128" stroke="#1e3212" stroke-width="2.5" stroke-linecap="round" opacity="0.75"/>
+            <path d="M880,165 Q848,178 838,202" stroke="#1e3212" stroke-width="2.2" stroke-linecap="round" opacity="0.7"/>
+
+            <path d="M1160,0 Q1148,38 1162,72 Q1174,105 1158,138"
+              stroke="#1a2e12" stroke-width="3.2" stroke-linecap="round" opacity="0.78"/>
+            <path d="M1162,72 Q1188,82 1200,102" stroke="#1e3212" stroke-width="2.2" stroke-linecap="round" opacity="0.72"/>
+
+            <path d="M680,0 Q668,30 678,60" stroke="#1a2e12" stroke-width="2.8" stroke-linecap="round" opacity="0.72"/>
+          </g>
+
+          <!-- BOTTOM EDGE GROWTH — rising from bottom -->
+          <g fill="none">
+            <path d="M300,900 Q312,862 290,822 Q272,785 298,748 Q320,716 308,678"
+              stroke="#1a2e12" stroke-width="4.5" stroke-linecap="round" opacity="0.85"/>
+            <path d="M300,900 Q312,862 290,822 Q272,785 298,748 Q320,716 308,678"
+              stroke="#4c6e30" stroke-width="1.8" stroke-linecap="round" opacity="0.38"/>
+            <path d="M290,822 Q258,832 245,858" stroke="#1e3212" stroke-width="3" stroke-linecap="round" opacity="0.78"/>
+            <path d="M298,748 Q268,758 256,782" stroke="#1e3212" stroke-width="2.5" stroke-linecap="round" opacity="0.74"/>
+
+            <path d="M1020,900 Q1035,862 1018,822 Q1005,785 1028,748 Q1048,716 1035,678"
+              stroke="#1a2e12" stroke-width="4" stroke-linecap="round" opacity="0.82"/>
+            <path d="M1020,900 Q1035,862 1018,822 Q1005,785 1028,748 Q1048,716 1035,678"
+              stroke="#4c6e30" stroke-width="1.6" stroke-linecap="round" opacity="0.36"/>
+            <path d="M1018,822 Q1052,830 1065,855" stroke="#1e3212" stroke-width="2.8" stroke-linecap="round" opacity="0.76"/>
+
+            <path d="M580,900 Q594,870 578,845 Q564,820 582,795"
+              stroke="#1a2e12" stroke-width="3.5" stroke-linecap="round" opacity="0.8"/>
+          </g>
+
+          <!-- CROSS-CREEPERS — vines crawling across the board middle -->
+          <g fill="none">
+            <!-- Horizontal creeper left to center -->
+            <path d="M0,480 Q85,468 165,488 Q240,506 318,492 Q398,478 465,498 Q530,515 580,505"
+              stroke="#1a2e12" stroke-width="3.5" stroke-linecap="round" opacity="0.72"/>
+            <path d="M0,480 Q85,468 165,488 Q240,506 318,492 Q398,478 465,498 Q530,515 580,505"
+              stroke="#364e22" stroke-width="1.4" stroke-linecap="round" opacity="0.38"/>
+
+            <!-- Horizontal creeper right to center -->
+            <path d="M1400,560 Q1318,548 1238,565 Q1162,580 1090,562 Q1018,546 952,566"
+              stroke="#1a2e12" stroke-width="3.2" stroke-linecap="round" opacity="0.7"/>
+            <path d="M1400,560 Q1318,548 1238,565 Q1162,580 1090,562 Q1018,546 952,566"
+              stroke="#364e22" stroke-width="1.3" stroke-linecap="round" opacity="0.35"/>
+          </g>
+
+          <!-- LEAF NODES — at vine junctions and tips -->
+          <g opacity="0.82">
+            <!-- Left vine nodes -->
+            <ellipse cx="100" cy="375" rx="10" ry="5.5" fill="#2d4a1e" transform="rotate(-38 100 375)"/>
+            <ellipse cx="126" cy="458" rx="9" ry="5" fill="#364e22" transform="rotate(-25 126 458)"/>
+            <ellipse cx="158" cy="556" rx="9.5" ry="5.2" fill="#2d4a1e" transform="rotate(-42 158 556)"/>
+            <ellipse cx="172" cy="645" rx="8.5" ry="4.8" fill="#364e22" transform="rotate(-30 172 645)"/>
+            <ellipse cx="204" cy="760" rx="8" ry="4.5" fill="#2d4a1e" transform="rotate(-20 204 760)"/>
+            <!-- Small leaf dots on branches -->
+            <circle cx="52" cy="258" r="4.5" fill="#2d4a1e"/>
+            <circle cx="74" cy="508" r="3.5" fill="#364e22"/>
+            <circle cx="118" cy="692" r="3.8" fill="#2d4a1e"/>
+
+            <!-- Right vine nodes -->
+            <ellipse cx="1346" cy="438" rx="10" ry="5.5" fill="#2d4a1e" transform="rotate(32 1346 438)"/>
+            <ellipse cx="1332" cy="535" rx="9" ry="5" fill="#364e22" transform="rotate(22 1332 535)"/>
+            <ellipse cx="1316" cy="652" rx="9.5" ry="5.2" fill="#2d4a1e" transform="rotate(38 1316 652)"/>
+            <ellipse cx="1318" cy="755" rx="8" ry="4.5" fill="#364e22" transform="rotate(18 1318 755)"/>
+            <circle cx="1378" cy="328" r="4.5" fill="#2d4a1e"/>
+            <circle cx="1295" cy="480" r="3.8" fill="#364e22"/>
+
+            <!-- Top tendril nodes -->
+            <ellipse cx="478" cy="92" rx="7" ry="4" fill="#2d4a1e" transform="rotate(-15 478 92)"/>
+            <ellipse cx="468" cy="172" rx="6.5" ry="3.5" fill="#364e22" transform="rotate(-10 468 172)"/>
+            <ellipse cx="472" cy="245" rx="6" ry="3.2" fill="#2d4a1e" transform="rotate(-5 472 245)"/>
+            <ellipse cx="884" cy="90" rx="7" ry="4" fill="#2d4a1e" transform="rotate(15 884 90)"/>
+            <ellipse cx="880" cy="165" rx="6.5" ry="3.5" fill="#364e22" transform="rotate(8 880 165)"/>
+            <circle cx="225" cy="88" r="4" fill="#364e22"/>
+            <circle cx="220" cy="242" r="3.5" fill="#2d4a1e"/>
+          </g>
+
+          <!-- Small dead leaves — scattered on the board -->
+          <g opacity="0.5">
+            <ellipse cx="340" cy="305" rx="5" ry="2.8" fill="#1e3212" transform="rotate(45 340 305)"/>
+            <ellipse cx="680" cy="520" rx="4.5" ry="2.5" fill="#243818" transform="rotate(-30 680 520)"/>
+            <ellipse cx="1000" cy="350" rx="5" ry="2.8" fill="#1e3212" transform="rotate(60 1000 350)"/>
+            <ellipse cx="820" cy="740" rx="4" ry="2.2" fill="#243818" transform="rotate(-50 820 740)"/>
+            <ellipse cx="560" cy="180" rx="4.5" ry="2.5" fill="#1e3212" transform="rotate(25 560 180)"/>
           </g>
 
           <!-- Vignette -->
           <rect x="0" y="0" width="1400" height="900" fill="url(#vignette)"/>
 
-          <!-- Central pulse glow -->
-          <ellipse cx="700" cy="450" rx="350" ry="250" fill="rgba(26,140,90,0.035)">
-            <animate attributeName="rx" values="350;390;350" dur="4s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="1;1.8;1" dur="4s" repeatCount="indefinite"/>
+          <!-- Central pulse glow — circuit still lives -->
+          <ellipse cx="700" cy="450" rx="360" ry="260" fill="rgba(10,156,98,0.032)">
+            <animate attributeName="rx" values="360;405;360" dur="5s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="1;1.9;1" dur="5s" repeatCount="indefinite"/>
           </ellipse>
         </svg>
       </div>
