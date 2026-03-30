@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-document.querySelectorAll('.site-nav a').forEach((link) => {
+document.querySelectorAll('.site-nav ul a').forEach((link) => {
   const href = link.getAttribute('href');
   if (href === currentPage) link.classList.add('active');
   else link.classList.remove('active');
