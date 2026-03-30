@@ -82,7 +82,7 @@ a.nav-logo:hover {
 
 .site-nav ul a {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.82rem;
   letter-spacing: 0.18em;
   color: var(--text-muted);
   text-decoration: none;
@@ -157,10 +157,15 @@ a.nav-logo:hover {
 }
 
 .hero-kicker {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.28em;
-  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: clamp(0.75rem, 1.8vw, 0.88rem);
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: #eef5e8;
+  text-shadow:
+    0 0 1px rgba(0, 0, 0, 0.95),
+    0 0 20px rgba(0, 0, 0, 0.7),
+    0 0 36px rgba(92, 184, 120, 0.32);
   margin-top: 0;
   margin-bottom: 1.5rem;
 }
@@ -190,8 +195,39 @@ a.nav-logo:hover {
   text-shadow:
     0 0 60px rgba(0, 0, 0, 0.9),
     0 0 28px var(--accent-glow);
-  /* Slower cycle (~8.5s); steps() = TV-style stepped / static holds */
-  animation: hero-glitch-rgb 8.5s steps(1, end) infinite;
+  /* ~9.75s cycle; steps() = TV-style stepped / static holds */
+  animation: hero-glitch-rgb 9.75s steps(1, end) infinite;
+}
+
+/* Horizontal scan / tear line across the title (synced to glitch bursts) */
+.glitch__cut {
+  position: absolute;
+  left: -0.12em;
+  right: -0.12em;
+  height: 3px;
+  top: 50%;
+  margin-top: -1px;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+  border-radius: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 8%,
+    rgba(255, 255, 255, 0.95) 38%,
+    #eefcf4 48%,
+    #7ef0a8 50%,
+    #eefcf4 52%,
+    rgba(255, 255, 255, 0.95) 62%,
+    rgba(255, 154, 106, 0.75) 78%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.85),
+    0 0 22px rgba(126, 240, 168, 0.45),
+    0 0 28px rgba(255, 154, 106, 0.25);
+  animation: hero-glitch-cut 9.75s steps(1, end) infinite;
 }
 
 .hero-title.glitch::before,
@@ -214,8 +250,8 @@ a.nav-logo:hover {
   clip-path: polygon(0 0, 100% 0, 100% 38%, 0 38%);
   opacity: 0;
   animation:
-    hero-glitch-strip-a 8.5s steps(1, end) infinite,
-    hero-glitch-clip-a 8.5s steps(1, end) infinite;
+    hero-glitch-strip-a 9.75s steps(1, end) infinite,
+    hero-glitch-clip-a 9.75s steps(1, end) infinite;
 }
 
 .hero-title.glitch::after {
@@ -223,8 +259,8 @@ a.nav-logo:hover {
   clip-path: polygon(0 62%, 100% 62%, 100% 100%, 0 100%);
   opacity: 0;
   animation:
-    hero-glitch-strip-b 8.5s steps(1, end) infinite,
-    hero-glitch-clip-b 8.5s steps(1, end) infinite;
+    hero-glitch-strip-b 9.75s steps(1, end) infinite,
+    hero-glitch-clip-b 9.75s steps(1, end) infinite;
 }
 
 /*
@@ -507,6 +543,104 @@ a.nav-logo:hover {
   71% { clip-path: polygon(0 63%, 100% 63%, 100% 100%, 0 100%); }
 }
 
+@keyframes hero-glitch-cut {
+  0%, 9.8%, 100% {
+    opacity: 0;
+    top: 50%;
+  }
+  /* burst 1 — line jumps through glyph box */
+  10.4% {
+    opacity: 0.95;
+    top: 16%;
+  }
+  10.7% {
+    opacity: 1;
+    top: 42%;
+  }
+  11% {
+    opacity: 1;
+    top: 28%;
+  }
+  11.35% {
+    opacity: 1;
+    top: 55%;
+  }
+  11.65% {
+    opacity: 0.9;
+    top: 36%;
+  }
+  11.95% {
+    opacity: 0.75;
+    top: 48%;
+  }
+  12.25% {
+    opacity: 0.5;
+    top: 40%;
+  }
+  12.55% {
+    opacity: 0;
+    top: 50%;
+  }
+  12.6%, 41.15% {
+    opacity: 0;
+    top: 50%;
+  }
+  /* burst 2 */
+  41.2% {
+    opacity: 0.9;
+    top: 22%;
+  }
+  41.55% {
+    opacity: 1;
+    top: 51%;
+  }
+  41.9% {
+    opacity: 1;
+    top: 34%;
+  }
+  42.25% {
+    opacity: 1;
+    top: 62%;
+  }
+  42.6% {
+    opacity: 0.72;
+    top: 44%;
+  }
+  42.95% {
+    opacity: 0;
+    top: 50%;
+  }
+  43%, 69.55% {
+    opacity: 0;
+    top: 50%;
+  }
+  /* burst 3 */
+  69.6% {
+    opacity: 0.92;
+    top: 12%;
+  }
+  69.95% {
+    opacity: 1;
+    top: 58%;
+  }
+  70.3% {
+    opacity: 1;
+    top: 26%;
+  }
+  70.65% {
+    opacity: 1;
+    top: 68%;
+  }
+  71% {
+    opacity: 0.65;
+    top: 38%;
+  }
+  71.35% {
+    opacity: 0;
+    top: 50%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .glitch__main {
     animation: none;
@@ -518,6 +652,11 @@ a.nav-logo:hover {
 
   .hero-title.glitch::before,
   .hero-title.glitch::after {
+    animation: none;
+    opacity: 0;
+  }
+
+  .glitch__cut {
     animation: none;
     opacity: 0;
   }
