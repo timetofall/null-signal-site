@@ -190,7 +190,8 @@ a.nav-logo:hover {
   text-shadow:
     0 0 60px rgba(0, 0, 0, 0.9),
     0 0 28px var(--accent-glow);
-  animation: hero-glitch-rgb 3.2s steps(1, end) infinite;
+  /* Slower cycle (~8.5s); steps() = TV-style stepped / static holds */
+  animation: hero-glitch-rgb 8.5s steps(1, end) infinite;
 }
 
 .hero-title.glitch::before,
@@ -212,82 +213,151 @@ a.nav-logo:hover {
   color: #7ef0a8;
   clip-path: polygon(0 0, 100% 0, 100% 38%, 0 38%);
   opacity: 0;
-  animation: hero-glitch-strip-a 3.2s steps(1, end) infinite;
+  animation: hero-glitch-strip-a 8.5s steps(1, end) infinite;
 }
 
 .hero-title.glitch::after {
   color: #ff9a6a;
   clip-path: polygon(0 62%, 100% 62%, 100% 100%, 0 100%);
   opacity: 0;
-  animation: hero-glitch-strip-b 3.2s steps(1, end) infinite;
+  animation: hero-glitch-strip-b 8.5s steps(1, end) infinite;
 }
 
-/* Chromatic / positional jitter — steps() so each frame holds (readable “glitch”) */
+/* Three sparse bursts; extra shadows + 1px jitter = static / interference */
 @keyframes hero-glitch-rgb {
-  0%, 100% {
+  0%, 10%, 100% {
     text-shadow:
       0 0 60px rgba(0, 0, 0, 0.9),
       0 0 28px var(--accent-glow);
     transform: translate(0);
   }
-  3% {
+  /* —— burst 1 —— */
+  10.8% {
     text-shadow:
-      0 0 60px rgba(0, 0, 0, 0.9),
+      0 0 60px rgba(0, 0, 0, 0.92),
       0 0 28px var(--accent-glow),
-      -6px 0 0 rgba(92, 184, 120, 0.95),
-      6px 0 0 rgba(196, 92, 40, 0.9);
-    transform: translate(-4px);
+      -3px 0 0 rgba(92, 184, 120, 0.45),
+      3px 0 0 rgba(196, 92, 40, 0.4),
+      1px -2px 0 rgba(255, 255, 255, 0.22),
+      -2px 1px 0 rgba(0, 200, 255, 0.18);
+    transform: translate(-1px);
   }
-  6% {
+  11.4% {
     text-shadow:
-      0 0 60px rgba(0, 0, 0, 0.9),
-      7px 0 0 rgba(92, 184, 120, 0.85),
-      -7px 0 0 rgba(196, 92, 40, 0.85);
-    transform: translate(5px);
-  }
-  9% {
-    text-shadow:
-      0 0 60px rgba(0, 0, 0, 0.9),
-      0 0 28px var(--accent-glow);
-    transform: translate(0);
-  }
-  31% {
-    text-shadow:
-      0 0 60px rgba(0, 0, 0, 0.9),
-      0 0 28px var(--accent-glow),
-      5px 0 0 rgba(92, 184, 120, 0.9),
-      -5px 0 0 rgba(196, 92, 40, 0.88);
+      0 0 60px rgba(0, 0, 0, 0.95),
+      -6px 0 0 rgba(92, 184, 120, 0.82),
+      6px 0 0 rgba(196, 92, 40, 0.72),
+      2px -1px 0 rgba(255, 255, 255, 0.38),
+      -3px 2px 0 rgba(160, 220, 255, 0.32),
+      1px 2px 0 rgba(40, 40, 40, 0.45),
+      -1px -1px 0 rgba(200, 200, 200, 0.2);
     transform: translate(3px);
   }
-  34% {
+  12.1% {
+    text-shadow:
+      0 0 60px rgba(0, 0, 0, 0.93),
+      5px 0 0 rgba(92, 184, 120, 0.55),
+      -6px 0 0 rgba(196, 92, 40, 0.62),
+      -2px 0 1px rgba(255, 255, 255, 0.3),
+      3px 1px 0 rgba(0, 228, 255, 0.22);
+    transform: translate(-4px);
+  }
+  12.8% {
     text-shadow:
       0 0 60px rgba(0, 0, 0, 0.9),
-      -5px 0 0 rgba(92, 184, 120, 0.88),
-      5px 0 0 rgba(196, 92, 40, 0.88);
-    transform: translate(-5px);
+      0 0 28px var(--accent-glow),
+      1px 0 0 rgba(220, 220, 220, 0.25),
+      -2px 0 0 rgba(0, 200, 255, 0.18),
+      0 1px 0 rgba(100, 100, 100, 0.35);
+    transform: translate(2px);
   }
-  37% {
+  13.6% {
     text-shadow:
       0 0 60px rgba(0, 0, 0, 0.9),
       0 0 28px var(--accent-glow);
     transform: translate(0);
   }
-  62% {
+  /* calm */
+  13.7%, 41.5% {
+    text-shadow:
+      0 0 60px rgba(0, 0, 0, 0.9),
+      0 0 28px var(--accent-glow);
+    transform: translate(0);
+  }
+  /* —— burst 2 —— */
+  42% {
+    text-shadow:
+      0 0 60px rgba(0, 0, 0, 0.92),
+      0 0 28px var(--accent-glow),
+      2px -2px 0 rgba(255, 255, 255, 0.2),
+      -2px 2px 0 rgba(0, 228, 255, 0.15);
+    transform: translate(1px);
+  }
+  42.7% {
+    text-shadow:
+      0 0 60px rgba(0, 0, 0, 0.94),
+      5px 0 0 rgba(92, 184, 120, 0.78),
+      -5px 0 0 rgba(196, 92, 40, 0.75),
+      -1px -2px 0 rgba(255, 255, 255, 0.35),
+      3px 1px 0 rgba(140, 200, 255, 0.28);
+    transform: translate(-3px);
+  }
+  43.4% {
+    text-shadow:
+      0 0 60px rgba(0, 0, 0, 0.92),
+      -7px 0 0 rgba(92, 184, 120, 0.5),
+      7px 0 0 rgba(196, 92, 40, 0.55),
+      2px 0 0 rgba(255, 255, 255, 0.22);
+    transform: translate(4px);
+  }
+  44.2% {
     text-shadow:
       0 0 60px rgba(0, 0, 0, 0.9),
       0 0 28px var(--accent-glow),
-      -8px 0 0 rgba(120, 255, 180, 0.75),
-      8px 0 0 rgba(255, 140, 80, 0.75);
-    transform: translate(-2px) skewX(-2deg);
+      1px 1px 0 rgba(180, 180, 180, 0.2);
+    transform: translate(-1px);
   }
-  65% {
+  45% {
     text-shadow:
       0 0 60px rgba(0, 0, 0, 0.9),
-      8px 0 0 rgba(92, 184, 120, 0.8),
-      -8px 0 0 rgba(196, 92, 40, 0.8);
-    transform: translate(3px) skewX(2deg);
+      0 0 28px var(--accent-glow);
+    transform: translate(0);
   }
-  68% {
+  /* calm */
+  45.1%, 70.5% {
+    text-shadow:
+      0 0 60px rgba(0, 0, 0, 0.9),
+      0 0 28px var(--accent-glow);
+    transform: translate(0);
+  }
+  /* —— burst 3 —— */
+  71% {
+    text-shadow:
+      0 0 60px rgba(0, 0, 0, 0.93),
+      0 0 28px var(--accent-glow),
+      -4px 0 0 rgba(120, 255, 180, 0.45),
+      4px 0 0 rgba(255, 140, 80, 0.42),
+      1px 2px 0 rgba(255, 255, 255, 0.2);
+    transform: translate(-2px) skewX(-1deg);
+  }
+  71.8% {
+    text-shadow:
+      0 0 60px rgba(0, 0, 0, 0.95),
+      8px 0 0 rgba(92, 184, 120, 0.65),
+      -8px 0 0 rgba(196, 92, 40, 0.62),
+      -2px -1px 0 rgba(200, 230, 255, 0.3),
+      2px 2px 0 rgba(60, 60, 60, 0.4);
+    transform: translate(3px) skewX(1.5deg);
+  }
+  72.6% {
+    text-shadow:
+      0 0 60px rgba(0, 0, 0, 0.9),
+      0 0 28px var(--accent-glow),
+      -3px 0 0 rgba(92, 184, 120, 0.35),
+      3px 0 0 rgba(196, 92, 40, 0.35);
+    transform: translate(-2px);
+  }
+  73.5% {
     text-shadow:
       0 0 60px rgba(0, 0, 0, 0.9),
       0 0 28px var(--accent-glow);
@@ -296,23 +366,39 @@ a.nav-logo:hover {
 }
 
 @keyframes hero-glitch-strip-a {
-  0%, 100% { opacity: 0; transform: translate(0); }
-  3%, 6% { opacity: 1; transform: translate(-8px); }
-  9% { opacity: 0; transform: translate(0); }
-  31%, 34% { opacity: 1; transform: translate(6px); }
-  37% { opacity: 0; transform: translate(0); }
-  62%, 65% { opacity: 1; transform: translate(-10px); }
-  68% { opacity: 0; transform: translate(0); }
+  0%, 10%, 100% { opacity: 0; transform: translate(0); }
+  10.8% { opacity: 0.45; transform: translate(-4px); }
+  11.4% { opacity: 1; transform: translate(-9px); }
+  12.1% { opacity: 0.7; transform: translate(5px); }
+  12.8% { opacity: 0.85; transform: translate(-6px); }
+  13.6% { opacity: 0; transform: translate(0); }
+  42% { opacity: 0.5; transform: translate(4px); }
+  42.7% { opacity: 1; transform: translate(-7px); }
+  43.4% { opacity: 0.65; transform: translate(6px); }
+  44.2% { opacity: 0.8; transform: translate(-4px); }
+  45% { opacity: 0; transform: translate(0); }
+  71% { opacity: 0.55; transform: translate(-8px); }
+  71.8% { opacity: 1; transform: translate(7px); }
+  72.6% { opacity: 0.75; transform: translate(-10px); }
+  73.5% { opacity: 0; transform: translate(0); }
 }
 
 @keyframes hero-glitch-strip-b {
-  0%, 100% { opacity: 0; transform: translate(0); }
-  3%, 6% { opacity: 1; transform: translate(8px); }
-  9% { opacity: 0; transform: translate(0); }
-  31%, 34% { opacity: 1; transform: translate(-7px); }
-  37% { opacity: 0; transform: translate(0); }
-  62%, 65% { opacity: 1; transform: translate(10px); }
-  68% { opacity: 0; transform: translate(0); }
+  0%, 10%, 100% { opacity: 0; transform: translate(0); }
+  10.8% { opacity: 0.4; transform: translate(5px); }
+  11.4% { opacity: 1; transform: translate(9px); }
+  12.1% { opacity: 0.65; transform: translate(-6px); }
+  12.8% { opacity: 0.9; transform: translate(7px); }
+  13.6% { opacity: 0; transform: translate(0); }
+  42% { opacity: 0.45; transform: translate(-5px); }
+  42.7% { opacity: 1; transform: translate(8px); }
+  43.4% { opacity: 0.6; transform: translate(-7px); }
+  44.2% { opacity: 0.85; transform: translate(5px); }
+  45% { opacity: 0; transform: translate(0); }
+  71% { opacity: 0.5; transform: translate(7px); }
+  71.8% { opacity: 1; transform: translate(-8px); }
+  72.6% { opacity: 0.7; transform: translate(10px); }
+  73.5% { opacity: 0; transform: translate(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
