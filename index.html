@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Null Signal</title>
-  <link rel="stylesheet" href="style.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=5" />
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -24,327 +24,536 @@
   <main>
     <section class="hero">
 
-      <!-- CIRCUIT BOARD BACKGROUND -->
+      <!-- OVERGROWN CIRCUIT BOARD -->
       <div class="hero-bg">
         <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+            <!-- Deep vignette — edges consumed by darkness -->
+            <radialGradient id="vignette" cx="50%" cy="50%" r="62%">
               <stop offset="0%" stop-color="transparent"/>
+              <stop offset="75%" stop-color="rgba(6,8,6,0.35)"/>
               <stop offset="100%" stop-color="#060806"/>
             </radialGradient>
-            <radialGradient id="rustBloom1" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#9b3e0a" stop-opacity="0.55"/>
-              <stop offset="60%" stop-color="#6b2b0a" stop-opacity="0.28"/>
-              <stop offset="100%" stop-color="#6b2b0a" stop-opacity="0"/>
+
+            <!-- Rust bloom gradients -->
+            <radialGradient id="rb1" cx="50%" cy="50%" r="50%">
+              <stop offset="0%"   stop-color="#a04010" stop-opacity="0.7"/>
+              <stop offset="40%"  stop-color="#7a2e08" stop-opacity="0.45"/>
+              <stop offset="100%" stop-color="#4a1a04" stop-opacity="0"/>
             </radialGradient>
-            <radialGradient id="rustBloom2" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#7a3210" stop-opacity="0.5"/>
-              <stop offset="55%" stop-color="#5a2208" stop-opacity="0.22"/>
-              <stop offset="100%" stop-color="#5a2208" stop-opacity="0"/>
+            <radialGradient id="rb2" cx="50%" cy="50%" r="50%">
+              <stop offset="0%"   stop-color="#8c3c0c" stop-opacity="0.65"/>
+              <stop offset="45%"  stop-color="#5a2208" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#3a1406" stop-opacity="0"/>
             </radialGradient>
-            <filter id="glow-circuit">
-              <feGaussianBlur stdDeviation="2.5" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            <radialGradient id="rb3" cx="50%" cy="50%" r="50%">
+              <stop offset="0%"   stop-color="#b44814" stop-opacity="0.55"/>
+              <stop offset="50%"  stop-color="#6e2a0a" stop-opacity="0.28"/>
+              <stop offset="100%" stop-color="#3a1406" stop-opacity="0"/>
+            </radialGradient>
+
+            <!-- Circuit trace glow -->
+            <filter id="glow-c" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="2.8" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
             </filter>
-            <filter id="glow-plasma">
-              <feGaussianBlur stdDeviation="3" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            <!-- Plasma glow (stronger) -->
+            <filter id="glow-p" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="3.5" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+
+            <!-- Organic displacement — makes vine paths look textured and alive -->
+            <filter id="organic" x="-8%" y="-8%" width="116%" height="116%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.022 0.055"
+                numOctaves="4" seed="9" result="noise"/>
+              <feDisplacementMap in="SourceGraphic" in2="noise"
+                scale="5" xChannelSelector="R" yChannelSelector="G"/>
             </filter>
           </defs>
 
-          <!-- ═══ CIRCUIT BOARD — dimmer beneath the growth ═══ -->
+          <!-- ════════════════════════════════════
+               LAYER 1 — PCB SURFACE
+               ════════════════════════════════════ -->
 
-          <!-- Major grid -->
-          <g stroke="#162012" stroke-width="0.8" fill="none" opacity="0.55">
-            <line x1="0" y1="120" x2="1400" y2="120"/>
-            <line x1="0" y1="280" x2="1400" y2="280"/>
-            <line x1="0" y1="440" x2="1400" y2="440"/>
-            <line x1="0" y1="600" x2="1400" y2="600"/>
+          <!-- Board base -->
+          <rect width="1400" height="900" fill="#060a06"/>
+
+          <!-- Major circuit grid -->
+          <g stroke="#152012" stroke-width="0.7" fill="none" opacity="0.5">
+            <line x1="0" y1="120" x2="1400" y2="120"/><line x1="0" y1="280" x2="1400" y2="280"/>
+            <line x1="0" y1="440" x2="1400" y2="440"/><line x1="0" y1="600" x2="1400" y2="600"/>
             <line x1="0" y1="760" x2="1400" y2="760"/>
-            <line x1="120" y1="0" x2="120" y2="900"/>
-            <line x1="280" y1="0" x2="280" y2="900"/>
-            <line x1="440" y1="0" x2="440" y2="900"/>
-            <line x1="600" y1="0" x2="600" y2="900"/>
-            <line x1="760" y1="0" x2="760" y2="900"/>
-            <line x1="920" y1="0" x2="920" y2="900"/>
-            <line x1="1080" y1="0" x2="1080" y2="900"/>
-            <line x1="1240" y1="0" x2="1240" y2="900"/>
+            <line x1="120" y1="0" x2="120" y2="900"/><line x1="280" y1="0" x2="280" y2="900"/>
+            <line x1="440" y1="0" x2="440" y2="900"/><line x1="600" y1="0" x2="600" y2="900"/>
+            <line x1="760" y1="0" x2="760" y2="900"/><line x1="920" y1="0" x2="920" y2="900"/>
+            <line x1="1080" y1="0" x2="1080" y2="900"/><line x1="1240" y1="0" x2="1240" y2="900"/>
           </g>
-
           <!-- Sub-grid -->
-          <g stroke="#0e1a0e" stroke-width="0.4" fill="none" opacity="0.45">
-            <line x1="0" y1="60" x2="1400" y2="60"/>
-            <line x1="0" y1="200" x2="1400" y2="200"/>
-            <line x1="0" y1="360" x2="1400" y2="360"/>
-            <line x1="0" y1="520" x2="1400" y2="520"/>
-            <line x1="0" y1="680" x2="1400" y2="680"/>
-            <line x1="0" y1="840" x2="1400" y2="840"/>
-            <line x1="60" y1="0" x2="60" y2="900"/>
-            <line x1="200" y1="0" x2="200" y2="900"/>
-            <line x1="360" y1="0" x2="360" y2="900"/>
-            <line x1="520" y1="0" x2="520" y2="900"/>
-            <line x1="680" y1="0" x2="680" y2="900"/>
-            <line x1="840" y1="0" x2="840" y2="900"/>
-            <line x1="1000" y1="0" x2="1000" y2="900"/>
-            <line x1="1160" y1="0" x2="1160" y2="900"/>
+          <g stroke="#0d1a0d" stroke-width="0.35" fill="none" opacity="0.4">
+            <line x1="0" y1="60" x2="1400" y2="60"/><line x1="0" y1="200" x2="1400" y2="200"/>
+            <line x1="0" y1="360" x2="1400" y2="360"/><line x1="0" y1="520" x2="1400" y2="520"/>
+            <line x1="0" y1="680" x2="1400" y2="680"/><line x1="0" y1="840" x2="1400" y2="840"/>
+            <line x1="60" y1="0" x2="60" y2="900"/><line x1="200" y1="0" x2="200" y2="900"/>
+            <line x1="360" y1="0" x2="360" y2="900"/><line x1="520" y1="0" x2="520" y2="900"/>
+            <line x1="680" y1="0" x2="680" y2="900"/><line x1="840" y1="0" x2="840" y2="900"/>
+            <line x1="1000" y1="0" x2="1000" y2="900"/><line x1="1160" y1="0" x2="1160" y2="900"/>
             <line x1="1320" y1="0" x2="1320" y2="900"/>
           </g>
 
-          <!-- Active circuit traces — glowing green, still powered -->
-          <g fill="none" filter="url(#glow-circuit)">
-            <line x1="0" y1="280" x2="440" y2="280" stroke="#0a9c62" stroke-width="1.8" opacity="0.55"/>
-            <line x1="760" y1="280" x2="1400" y2="280" stroke="#0a9c62" stroke-width="1.5" opacity="0.45"/>
-            <line x1="120" y1="440" x2="600" y2="440" stroke="#0a9c62" stroke-width="1.8" opacity="0.5"/>
-            <line x1="920" y1="120" x2="1400" y2="120" stroke="#0a9c62" stroke-width="1.5" opacity="0.45"/>
-            <line x1="280" y1="0" x2="280" y2="240" stroke="#0a9c62" stroke-width="1.8" opacity="0.5"/>
-            <line x1="760" y1="360" x2="760" y2="900" stroke="#0a9c62" stroke-width="1.5" opacity="0.4"/>
-            <line x1="600" y1="440" x2="600" y2="900" stroke="#0a9c62" stroke-width="1.5" opacity="0.42"/>
-            <line x1="1080" y1="0" x2="1080" y2="280" stroke="#0a9c62" stroke-width="1.8" opacity="0.5"/>
-            <line x1="440" y1="600" x2="920" y2="600" stroke="#0a9c62" stroke-width="1.5" opacity="0.4"/>
+          <!-- Active circuit traces — still powered, glowing beneath the vines -->
+          <g fill="none" filter="url(#glow-c)">
+            <line x1="0"    y1="280" x2="440"  y2="280" stroke="#0a9462" stroke-width="1.8" opacity="0.6"/>
+            <line x1="760"  y1="280" x2="1400" y2="280" stroke="#0a9462" stroke-width="1.5" opacity="0.5"/>
+            <line x1="120"  y1="440" x2="600"  y2="440" stroke="#0a9462" stroke-width="1.8" opacity="0.55"/>
+            <line x1="920"  y1="120" x2="1400" y2="120" stroke="#0a9462" stroke-width="1.5" opacity="0.5"/>
+            <line x1="280"  y1="0"   x2="280"  y2="240" stroke="#0a9462" stroke-width="1.8" opacity="0.55"/>
+            <line x1="760"  y1="360" x2="760"  y2="900" stroke="#0a9462" stroke-width="1.4" opacity="0.42"/>
+            <line x1="600"  y1="440" x2="600"  y2="900" stroke="#0a9462" stroke-width="1.4" opacity="0.45"/>
+            <line x1="1080" y1="0"   x2="1080" y2="280" stroke="#0a9462" stroke-width="1.8" opacity="0.55"/>
+            <line x1="440"  y1="600" x2="920"  y2="600" stroke="#0a9462" stroke-width="1.4" opacity="0.42"/>
           </g>
-
-          <!-- Plasma/data traces — cyan -->
-          <g fill="none" filter="url(#glow-plasma)">
-            <line x1="440" y1="0" x2="440" y2="120" stroke="#00d4ff" stroke-width="1.5" opacity="0.45"/>
-            <line x1="0" y1="600" x2="240" y2="600" stroke="#00d4ff" stroke-width="1.2" opacity="0.4"/>
-            <line x1="1080" y1="440" x2="1400" y2="440" stroke="#00d4ff" stroke-width="1.2" opacity="0.38"/>
-            <line x1="920" y1="680" x2="1400" y2="680" stroke="#00d4ff" stroke-width="1" opacity="0.35"/>
+          <!-- Plasma traces — cyan data still flowing -->
+          <g fill="none" filter="url(#glow-p)">
+            <line x1="440"  y1="0"   x2="440"  y2="120" stroke="#00c8e8" stroke-width="1.5" opacity="0.5"/>
+            <line x1="0"    y1="600" x2="240"  y2="600" stroke="#00c8e8" stroke-width="1.2" opacity="0.42"/>
+            <line x1="1080" y1="440" x2="1400" y2="440" stroke="#00c8e8" stroke-width="1.2" opacity="0.4"/>
+            <line x1="920"  y1="680" x2="1400" y2="680" stroke="#00c8e8" stroke-width="1"   opacity="0.36"/>
           </g>
 
           <!-- Solder nodes -->
-          <g fill="#0a9c62" opacity="0.6" filter="url(#glow-circuit)">
-            <circle cx="280" cy="280" r="5"/><circle cx="440" cy="280" r="4"/>
-            <circle cx="600" cy="280" r="4"/><circle cx="760" cy="280" r="5"/>
-            <circle cx="120" cy="440" r="4"/><circle cx="600" cy="440" r="5"/>
-            <circle cx="1080" cy="280" r="5"/><circle cx="1080" cy="120" r="4"/>
-            <circle cx="280" cy="120" r="4"/><circle cx="760" cy="600" r="4"/>
-            <circle cx="440" cy="600" r="5"/><circle cx="920" cy="600" r="4"/>
+          <g fill="#0a9462" filter="url(#glow-c)" opacity="0.65">
+            <circle cx="280" cy="280" r="5.5"/><circle cx="440" cy="280" r="4.5"/>
+            <circle cx="600" cy="280" r="4.5"/><circle cx="760" cy="280" r="5.5"/>
+            <circle cx="120" cy="440" r="4.5"/><circle cx="600" cy="440" r="5.5"/>
+            <circle cx="1080" cy="280" r="5.5"/><circle cx="1080" cy="120" r="4.5"/>
+            <circle cx="280" cy="120" r="4.5"/><circle cx="760" cy="600" r="4.5"/>
+            <circle cx="440" cy="600" r="5.5"/><circle cx="920" cy="600" r="4.5"/>
           </g>
-          <g fill="#00d4ff" opacity="0.45" filter="url(#glow-plasma)">
-            <circle cx="440" cy="120" r="4"/><circle cx="240" cy="600" r="4"/>
-            <circle cx="1080" cy="440" r="4"/><circle cx="920" cy="680" r="4"/>
+          <g fill="#00c8e8" filter="url(#glow-p)" opacity="0.48">
+            <circle cx="440" cy="120" r="4.5"/><circle cx="240" cy="600" r="4.5"/>
+            <circle cx="1080" cy="440" r="4.5"/><circle cx="920" cy="680" r="4.5"/>
           </g>
-
           <!-- VIA rings -->
-          <g fill="none" stroke="#0a9c62" stroke-width="1" opacity="0.38">
-            <circle cx="280" cy="280" r="10"/><circle cx="600" cy="440" r="10"/>
-            <circle cx="1080" cy="280" r="9"/><circle cx="760" cy="280" r="8"/>
-            <circle cx="440" cy="600" r="9"/>
+          <g fill="none" stroke="#0a9462" stroke-width="1.2" opacity="0.4">
+            <circle cx="280" cy="280" r="11"/><circle cx="600" cy="440" r="11"/>
+            <circle cx="1080" cy="280" r="10"/><circle cx="440" cy="600" r="10"/>
           </g>
 
-          <!-- IC chip outlines -->
-          <g fill="none" stroke="#1c2a18" stroke-width="1.5" opacity="0.65">
-            <rect x="145" y="320" width="110" height="90" rx="2"/>
-            <line x1="145" y1="345" x2="115" y2="345" stroke="#162012" stroke-width="1"/>
-            <line x1="145" y1="368" x2="115" y2="368" stroke="#162012" stroke-width="1"/>
-            <line x1="145" y1="391" x2="115" y2="391" stroke="#162012" stroke-width="1"/>
-            <line x1="255" y1="345" x2="285" y2="345" stroke="#162012" stroke-width="1"/>
-            <line x1="255" y1="368" x2="285" y2="368" stroke="#162012" stroke-width="1"/>
-            <line x1="255" y1="391" x2="285" y2="391" stroke="#162012" stroke-width="1"/>
-            <rect x="960" y="480" width="100" height="80" rx="2"/>
-            <line x1="960" y1="502" x2="930" y2="502" stroke="#162012" stroke-width="1"/>
-            <line x1="960" y1="524" x2="930" y2="524" stroke="#162012" stroke-width="1"/>
-            <line x1="1060" y1="502" x2="1090" y2="502" stroke="#162012" stroke-width="1"/>
-            <line x1="1060" y1="524" x2="1090" y2="524" stroke="#162012" stroke-width="1"/>
-            <rect x="480" y="650" width="90" height="70" rx="2"/>
-            <line x1="480" y1="668" x2="450" y2="668" stroke="#162012" stroke-width="1"/>
-            <line x1="480" y1="688" x2="450" y2="688" stroke="#162012" stroke-width="1"/>
-            <line x1="570" y1="668" x2="600" y2="668" stroke="#162012" stroke-width="1"/>
-            <line x1="570" y1="688" x2="600" y2="688" stroke="#162012" stroke-width="1"/>
+          <!-- IC Chips — corroded outlines -->
+          <g fill="none" stroke="#1c2c18" stroke-width="1.5" opacity="0.7">
+            <!-- Chip A — left zone, partially covered by vines -->
+            <rect x="140" y="318" width="115" height="92" rx="3"/>
+            <line x1="140" y1="342" x2="108" y2="342" stroke="#152012" stroke-width="1"/>
+            <line x1="140" y1="364" x2="108" y2="364" stroke="#152012" stroke-width="1"/>
+            <line x1="140" y1="386" x2="108" y2="386" stroke="#152012" stroke-width="1"/>
+            <line x1="255" y1="342" x2="288" y2="342" stroke="#152012" stroke-width="1"/>
+            <line x1="255" y1="364" x2="288" y2="364" stroke="#152012" stroke-width="1"/>
+            <line x1="255" y1="386" x2="288" y2="386" stroke="#152012" stroke-width="1"/>
+            <!-- Chip B — right zone -->
+            <rect x="955" y="478" width="105" height="82" rx="3"/>
+            <line x1="955" y1="500" x2="922" y2="500" stroke="#152012" stroke-width="1"/>
+            <line x1="955" y1="522" x2="922" y2="522" stroke="#152012" stroke-width="1"/>
+            <line x1="1060" y1="500" x2="1092" y2="500" stroke="#152012" stroke-width="1"/>
+            <line x1="1060" y1="522" x2="1092" y2="522" stroke="#152012" stroke-width="1"/>
+            <!-- Chip C — bottom center -->
+            <rect x="476" y="648" width="95" height="72" rx="3"/>
+            <line x1="476" y1="666" x2="444" y2="666" stroke="#152012" stroke-width="1"/>
+            <line x1="476" y1="686" x2="444" y2="686" stroke="#152012" stroke-width="1"/>
+            <line x1="571" y1="666" x2="604" y2="666" stroke="#152012" stroke-width="1"/>
+            <line x1="571" y1="686" x2="604" y2="686" stroke="#152012" stroke-width="1"/>
+            <!-- Large processor — top right area -->
+            <rect x="850" y="85" width="145" height="118" rx="3"/>
+            <line x1="850" y1="108" x2="818" y2="108" stroke="#152012" stroke-width="1"/>
+            <line x1="850" y1="128" x2="818" y2="128" stroke="#152012" stroke-width="1"/>
+            <line x1="850" y1="148" x2="818" y2="148" stroke="#152012" stroke-width="1"/>
+            <line x1="850" y1="168" x2="818" y2="168" stroke="#152012" stroke-width="1"/>
+            <line x1="995" y1="108" x2="1028" y2="108" stroke="#152012" stroke-width="1"/>
+            <line x1="995" y1="128" x2="1028" y2="128" stroke="#152012" stroke-width="1"/>
+            <line x1="995" y1="148" x2="1028" y2="148" stroke="#152012" stroke-width="1"/>
+            <line x1="995" y1="168" x2="1028" y2="168" stroke="#152012" stroke-width="1"/>
           </g>
-          <path d="M168,320 a10,10 0 0,1 20,0" fill="#0a0d0a" stroke="#1c2a18" stroke-width="1.5"/>
-          <path d="M982,480 a8,8 0 0,1 16,0" fill="#0a0d0a" stroke="#1c2a18" stroke-width="1.5"/>
-          <path d="M500,650 a7,7 0 0,1 14,0" fill="#0a0d0a" stroke="#1c2a18" stroke-width="1.5"/>
+          <!-- Chip notches -->
+          <path d="M163,318 a11,11 0 0,1 22,0"  fill="#060a06" stroke="#1c2c18" stroke-width="1.5"/>
+          <path d="M977,478 a9,9 0 0,1 18,0"    fill="#060a06" stroke="#1c2c18" stroke-width="1.5"/>
+          <path d="M496,648 a8,8 0 0,1 16,0"    fill="#060a06" stroke="#1c2c18" stroke-width="1.5"/>
+          <path d="M872,85  a12,12 0 0,1 24,0"  fill="#060a06" stroke="#1c2c18" stroke-width="1.5"/>
 
-          <!-- ═══ RUST BLOOMS — heavy corrosion ═══ -->
-          <ellipse cx="60" cy="65" rx="110" ry="75" fill="url(#rustBloom1)"/>
-          <ellipse cx="1330" cy="820" rx="120" ry="85" fill="url(#rustBloom2)"/>
-          <ellipse cx="1200" cy="140" rx="80" ry="55" fill="url(#rustBloom1)" opacity="0.7"/>
-          <ellipse cx="180" cy="760" rx="90" ry="60" fill="url(#rustBloom2)" opacity="0.75"/>
-          <ellipse cx="700" cy="880" rx="200" ry="50" fill="#5a2208" opacity="0.18"/>
-          <!-- Rust streaks -->
-          <rect x="0" y="530" width="130" height="80" rx="6" fill="#8b3a0e" opacity="0.14"/>
-          <rect x="1310" y="400" width="90" height="55" rx="4" fill="#7a3210" opacity="0.12"/>
-          <ellipse cx="840" cy="50" rx="70" ry="35" fill="#6b2b0a" opacity="0.2"/>
-
-          <!-- ═══ VINES — dominant, crawling over everything ═══ -->
-
-          <!-- LEFT MAIN VINE — heavy trunk from top-left -->
-          <g fill="none">
-            <!-- Shadow/depth layer -->
-            <path d="M-15,140 Q60,175 52,258 Q44,342 100,375 Q138,398 126,458 Q115,520 158,556 Q182,575 172,645 Q162,715 204,760 Q222,788 210,870 Q206,892 228,910"
-              stroke="#0e1e08" stroke-width="9" stroke-linecap="round" opacity="0.9"/>
-            <!-- Main stem -->
-            <path d="M-15,140 Q60,175 52,258 Q44,342 100,375 Q138,398 126,458 Q115,520 158,556 Q182,575 172,645 Q162,715 204,760 Q222,788 210,870 Q206,892 228,910"
-              stroke="#243818" stroke-width="6" stroke-linecap="round" opacity="0.95"/>
-            <!-- Highlight vein -->
-            <path d="M-15,140 Q60,175 52,258 Q44,342 100,375 Q138,398 126,458 Q115,520 158,556 Q182,575 172,645 Q162,715 204,760 Q222,788 210,870 Q206,892 228,910"
-              stroke="#4c6e30" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
-
-            <!-- Branch 1 -->
-            <path d="M52,258 Q-5,278 -18,315" stroke="#1e3212" stroke-width="4.5" stroke-linecap="round" opacity="0.9"/>
-            <path d="M52,258 Q-5,278 -18,315" stroke="#364e22" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-            <!-- Branch 2 -->
-            <path d="M100,375 Q55,398 42,428" stroke="#1e3212" stroke-width="4" stroke-linecap="round" opacity="0.88"/>
-            <path d="M100,375 Q55,398 42,428" stroke="#364e22" stroke-width="1.8" stroke-linecap="round" opacity="0.45"/>
-            <!-- Branch 3 — draping over chip 1 -->
-            <path d="M126,458 Q88,475 74,508 Q62,538 80,560" stroke="#1e3212" stroke-width="3.5" stroke-linecap="round" opacity="0.88"/>
-            <path d="M126,458 Q88,475 74,508 Q62,538 80,560" stroke="#364e22" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
-            <!-- Sub-branch from branch 3 -->
-            <path d="M74,508 Q42,515 28,540" stroke="#1e3212" stroke-width="2.8" stroke-linecap="round" opacity="0.8"/>
-            <!-- Branch 4 -->
-            <path d="M158,556 Q118,572 104,602" stroke="#1e3212" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
-            <path d="M158,556 Q118,572 104,602" stroke="#4c6e30" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-            <!-- Branch 5 — long creeper toward center -->
-            <path d="M172,645 Q132,658 118,692 Q108,720 130,745" stroke="#1e3212" stroke-width="3.2" stroke-linecap="round" opacity="0.82"/>
-            <path d="M172,645 Q132,658 118,692 Q108,720 130,745" stroke="#364e22" stroke-width="1.4" stroke-linecap="round" opacity="0.42"/>
+          <!-- Capacitors — top-view cylinders, left zone -->
+          <g fill="#0e180c" stroke="#1c2c18" stroke-width="1.2" opacity="0.75">
+            <circle cx="355" cy="155" r="16"/>
+            <circle cx="395" cy="155" r="16"/>
+            <circle cx="435" cy="155" r="16"/>
+          </g>
+          <g fill="none" stroke="#1e3018" stroke-width="0.8" opacity="0.5">
+            <circle cx="355" cy="155" r="10"/>
+            <circle cx="395" cy="155" r="10"/>
+            <circle cx="435" cy="155" r="10"/>
+          </g>
+          <!-- Caps right side -->
+          <g fill="#0e180c" stroke="#1c2c18" stroke-width="1.2" opacity="0.7">
+            <circle cx="1185" cy="560" r="14"/>
+            <circle cx="1220" cy="560" r="14"/>
+          </g>
+          <g fill="none" stroke="#1e3018" stroke-width="0.8" opacity="0.45">
+            <circle cx="1185" cy="560" r="9"/>
+            <circle cx="1220" cy="560" r="9"/>
           </g>
 
-          <!-- LEFT SECONDARY VINE — starts from top edge -->
-          <g fill="none">
-            <path d="M220,0 Q205,45 225,88 Q242,128 218,168 Q198,200 220,242 Q238,275 215,315 Q194,350 210,395"
-              stroke="#1a2e12" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
-            <path d="M220,0 Q205,45 225,88 Q242,128 218,168 Q198,200 220,242 Q238,275 215,315 Q194,350 210,395"
-              stroke="#364e22" stroke-width="2" stroke-linecap="round" opacity="0.42"/>
-            <!-- Tendrils -->
-            <path d="M225,88 Q258,96 272,115" stroke="#1e3212" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
-            <path d="M218,168 Q188,178 175,198" stroke="#1e3212" stroke-width="2.5" stroke-linecap="round" opacity="0.78"/>
-            <path d="M220,242 Q255,250 268,272" stroke="#1e3212" stroke-width="2.5" stroke-linecap="round" opacity="0.75"/>
+          <!-- ════════════════════════════════════
+               LAYER 2 — RUST BLOOMS
+               ════════════════════════════════════ -->
+
+          <!-- Corner blooms — heaviest staining -->
+          <ellipse cx="0"    cy="0"   rx="220" ry="165" fill="url(#rb1)"/>
+          <ellipse cx="1400" cy="900" rx="240" ry="180" fill="url(#rb2)"/>
+          <ellipse cx="1400" cy="0"   rx="180" ry="130" fill="url(#rb3)" opacity="0.85"/>
+          <ellipse cx="0"    cy="900" rx="190" ry="145" fill="url(#rb2)" opacity="0.8"/>
+
+          <!-- Secondary rust patches across board -->
+          <ellipse cx="680"  cy="820" rx="220" ry="65"  fill="url(#rb1)" opacity="0.55"/>
+          <ellipse cx="920"  cy="65"  rx="160" ry="52"  fill="url(#rb3)" opacity="0.6"/>
+          <ellipse cx="340"  cy="740" rx="90"  ry="58"  fill="url(#rb2)" opacity="0.6"/>
+          <ellipse cx="1140" cy="320" rx="75"  ry="48"  fill="url(#rb1)" opacity="0.5"/>
+          <!-- Rust streaks along edges -->
+          <rect x="0"    y="480" width="110" height="88" rx="6" fill="#8c3c0c" opacity="0.18"/>
+          <rect x="1300" y="360" width="100" height="62" rx="5" fill="#7a3210" opacity="0.16"/>
+
+          <!-- ════════════════════════════════════
+               LAYER 3 — VINES
+               The organic displacement filter is
+               applied per-group so tips/branches
+               deform independently.
+               ════════════════════════════════════ -->
+
+          <!--
+            Vine rendering method: 4 overlapping strokes per path
+              S1 — shadow   : width W,     color #0a1506,  opacity 0.95
+              S2 — dark body: width W-6,   color #1a2c0c
+              S3 — mid green: width W-12,  color #2c4618
+              S4 — highlight: width 4-5,   color #4c6e26
+            Plus organic displacement on the group.
+
+            Main trunk W = 24
+            Branch     W = 16
+            Tendril    W = 10
+          -->
+
+          <!-- ── LEFT MAIN TRUNK ── -->
+          <g filter="url(#organic)">
+            <path d="M-8,108 C 68,132 74,195 50,258 C 28,320 98,348 84,418 C 72,488 152,515 138,588 C 125,660 195,688 178,765 C 162,840 228,865 218,910"
+              stroke="#0a1506" stroke-width="24" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M-8,108 C 68,132 74,195 50,258 C 28,320 98,348 84,418 C 72,488 152,515 138,588 C 125,660 195,688 178,765 C 162,840 228,865 218,910"
+              stroke="#1a2c0c" stroke-width="18" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M-8,108 C 68,132 74,195 50,258 C 28,320 98,348 84,418 C 72,488 152,515 138,588 C 125,660 195,688 178,765 C 162,840 228,865 218,910"
+              stroke="#2c4618" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M-8,108 C 68,132 74,195 50,258 C 28,320 98,348 84,418 C 72,488 152,515 138,588 C 125,660 195,688 178,765 C 162,840 228,865 218,910"
+              stroke="#4c6e26" stroke-width="4"  fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.65"/>
+          </g>
+          <!-- Left trunk branches -->
+          <g filter="url(#organic)">
+            <!-- Branch L-A -->
+            <path d="M50,258 C 8,276 -14,315 -20,355"
+              stroke="#0a1506" stroke-width="16" fill="none" stroke-linecap="round"/>
+            <path d="M50,258 C 8,276 -14,315 -20,355"
+              stroke="#1a2c0c" stroke-width="11" fill="none" stroke-linecap="round"/>
+            <path d="M50,258 C 8,276 -14,315 -20,355"
+              stroke="#2c4618" stroke-width="6.5" fill="none" stroke-linecap="round"/>
+            <path d="M50,258 C 8,276 -14,315 -20,355"
+              stroke="#4c6e26" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+            <!-- Branch L-B — drapes over chip A -->
+            <path d="M84,418 C 44,435 22,472 18,512"
+              stroke="#0a1506" stroke-width="16" fill="none" stroke-linecap="round"/>
+            <path d="M84,418 C 44,435 22,472 18,512"
+              stroke="#1a2c0c" stroke-width="11" fill="none" stroke-linecap="round"/>
+            <path d="M84,418 C 44,435 22,472 18,512"
+              stroke="#2c4618" stroke-width="6.5" fill="none" stroke-linecap="round"/>
+            <path d="M84,418 C 44,435 22,472 18,512"
+              stroke="#4c6e26" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+            <!-- Branch L-B sub-tendril -->
+            <path d="M22,472 C -12,482 -22,510 -18,540"
+              stroke="#0a1506" stroke-width="10" fill="none" stroke-linecap="round"/>
+            <path d="M22,472 C -12,482 -22,510 -18,540"
+              stroke="#1a2c0c" stroke-width="7"  fill="none" stroke-linecap="round"/>
+            <path d="M22,472 C -12,482 -22,510 -18,540"
+              stroke="#2c4618" stroke-width="4"  fill="none" stroke-linecap="round"/>
+            <path d="M22,472 C -12,482 -22,510 -18,540"
+              stroke="#4c6e26" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.55"/>
+            <!-- Branch L-C -->
+            <path d="M138,588 C 98,608 74,648 68,690"
+              stroke="#0a1506" stroke-width="16" fill="none" stroke-linecap="round"/>
+            <path d="M138,588 C 98,608 74,648 68,690"
+              stroke="#1a2c0c" stroke-width="11" fill="none" stroke-linecap="round"/>
+            <path d="M138,588 C 98,608 74,648 68,690"
+              stroke="#2c4618" stroke-width="6.5" fill="none" stroke-linecap="round"/>
+            <path d="M138,588 C 98,608 74,648 68,690"
+              stroke="#4c6e26" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+            <!-- Branch L-D — creeping right toward center -->
+            <path d="M178,765 C 138,782 115,820 112,862"
+              stroke="#0a1506" stroke-width="14" fill="none" stroke-linecap="round"/>
+            <path d="M178,765 C 138,782 115,820 112,862"
+              stroke="#1a2c0c" stroke-width="9.5" fill="none" stroke-linecap="round"/>
+            <path d="M178,765 C 138,782 115,820 112,862"
+              stroke="#2c4618" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+            <path d="M178,765 C 138,782 115,820 112,862"
+              stroke="#4c6e26" stroke-width="2"   fill="none" stroke-linecap="round" opacity="0.55"/>
           </g>
 
-          <!-- RIGHT MAIN VINE — heavy from top-right -->
-          <g fill="none">
-            <!-- Shadow -->
-            <path d="M1415,220 Q1368,255 1378,328 Q1388,402 1346,438 Q1316,462 1332,535 Q1348,608 1316,652 Q1300,678 1318,755 Q1330,800 1310,870"
-              stroke="#0e1e08" stroke-width="8.5" stroke-linecap="round" opacity="0.9"/>
-            <!-- Main stem -->
-            <path d="M1415,220 Q1368,255 1378,328 Q1388,402 1346,438 Q1316,462 1332,535 Q1348,608 1316,652 Q1300,678 1318,755 Q1330,800 1310,870"
-              stroke="#243818" stroke-width="5.5" stroke-linecap="round" opacity="0.92"/>
-            <path d="M1415,220 Q1368,255 1378,328 Q1388,402 1346,438 Q1316,462 1332,535 Q1348,608 1316,652 Q1300,678 1318,755 Q1330,800 1310,870"
-              stroke="#4c6e30" stroke-width="2" stroke-linecap="round" opacity="0.38"/>
-            <!-- Branches right -->
-            <path d="M1378,328 Q1415,346 1430,375" stroke="#1e3212" stroke-width="4" stroke-linecap="round" opacity="0.88"/>
-            <path d="M1378,328 Q1415,346 1430,375" stroke="#364e22" stroke-width="1.7" stroke-linecap="round" opacity="0.42"/>
-            <path d="M1346,438 Q1388,455 1406,482" stroke="#1e3212" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
-            <path d="M1332,535 Q1372,548 1390,575" stroke="#1e3212" stroke-width="3.2" stroke-linecap="round" opacity="0.82"/>
-            <path d="M1316,652 Q1355,665 1372,692" stroke="#1e3212" stroke-width="3" stroke-linecap="round" opacity="0.78"/>
-            <!-- Long tendril curling toward chip 2 -->
-            <path d="M1346,438 Q1310,450 1295,480 Q1282,508 1295,535" stroke="#1a2e12" stroke-width="3.5" stroke-linecap="round" opacity="0.8"/>
-            <path d="M1346,438 Q1310,450 1295,480 Q1282,508 1295,535" stroke="#364e22" stroke-width="1.4" stroke-linecap="round" opacity="0.38"/>
+          <!-- ── LEFT SECONDARY VINE — from top, between trunk and chips ── -->
+          <g filter="url(#organic)">
+            <path d="M208,0 C 196,55 215,102 198,158 C 182,212 205,258 190,315 C 175,368 198,412 182,465"
+              stroke="#0a1506" stroke-width="18" fill="none" stroke-linecap="round"/>
+            <path d="M208,0 C 196,55 215,102 198,158 C 182,212 205,258 190,315 C 175,368 198,412 182,465"
+              stroke="#1a2c0c" stroke-width="13" fill="none" stroke-linecap="round"/>
+            <path d="M208,0 C 196,55 215,102 198,158 C 182,212 205,258 190,315 C 175,368 198,412 182,465"
+              stroke="#2c4618" stroke-width="8"  fill="none" stroke-linecap="round"/>
+            <path d="M208,0 C 196,55 215,102 198,158 C 182,212 205,258 190,315 C 175,368 198,412 182,465"
+              stroke="#4c6e26" stroke-width="3"  fill="none" stroke-linecap="round" opacity="0.6"/>
+            <!-- Tendrils right -->
+            <path d="M215,102 C 248,115 265,140 272,172"
+              stroke="#0a1506" stroke-width="10" fill="none" stroke-linecap="round"/>
+            <path d="M215,102 C 248,115 265,140 272,172"
+              stroke="#1a2c0c" stroke-width="7"  fill="none" stroke-linecap="round"/>
+            <path d="M215,102 C 248,115 265,140 272,172"
+              stroke="#2c4618" stroke-width="4"  fill="none" stroke-linecap="round"/>
+            <path d="M215,102 C 248,115 265,140 272,172"
+              stroke="#4c6e26" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.55"/>
+            <path d="M198,158 C 168,172 152,198 148,230"
+              stroke="#0a1506" stroke-width="10" fill="none" stroke-linecap="round"/>
+            <path d="M198,158 C 168,172 152,198 148,230"
+              stroke="#1a2c0c" stroke-width="7"  fill="none" stroke-linecap="round"/>
+            <path d="M198,158 C 168,172 152,198 148,230"
+              stroke="#2c4618" stroke-width="4"  fill="none" stroke-linecap="round"/>
+            <path d="M198,158 C 168,172 152,198 148,230"
+              stroke="#4c6e26" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.55"/>
           </g>
 
-          <!-- RIGHT SECONDARY VINE — bottom-right corner -->
-          <g fill="none">
-            <path d="M1400,680 Q1360,660 1372,622 Q1382,586 1352,560 Q1326,538 1340,502"
-              stroke="#1a2e12" stroke-width="4.5" stroke-linecap="round" opacity="0.85"/>
-            <path d="M1400,680 Q1360,660 1372,622 Q1382,586 1352,560 Q1326,538 1340,502"
-              stroke="#4c6e30" stroke-width="1.8" stroke-linecap="round" opacity="0.38"/>
+          <!-- ── RIGHT MAIN TRUNK ── -->
+          <g filter="url(#organic)">
+            <path d="M1410,175 C 1355,200 1372,262 1384,325 C 1396,390 1345,420 1358,492 C 1370,565 1318,592 1332,668 C 1345,742 1295,768 1308,845 C 1315,878 1288,898 1275,915"
+              stroke="#0a1506" stroke-width="24" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M1410,175 C 1355,200 1372,262 1384,325 C 1396,390 1345,420 1358,492 C 1370,565 1318,592 1332,668 C 1345,742 1295,768 1308,845 C 1315,878 1288,898 1275,915"
+              stroke="#1a2c0c" stroke-width="18" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M1410,175 C 1355,200 1372,262 1384,325 C 1396,390 1345,420 1358,492 C 1370,565 1318,592 1332,668 C 1345,742 1295,768 1308,845 C 1315,878 1288,898 1275,915"
+              stroke="#2c4618" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M1410,175 C 1355,200 1372,262 1384,325 C 1396,390 1345,420 1358,492 C 1370,565 1318,592 1332,668 C 1345,742 1295,768 1308,845 C 1315,878 1288,898 1275,915"
+              stroke="#4c6e26" stroke-width="4"  fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.65"/>
+          </g>
+          <!-- Right trunk branches -->
+          <g filter="url(#organic)">
+            <!-- Branch R-A — extends right off screen -->
+            <path d="M1384,325 C 1420,342 1440,378 1448,415"
+              stroke="#0a1506" stroke-width="16" fill="none" stroke-linecap="round"/>
+            <path d="M1384,325 C 1420,342 1440,378 1448,415"
+              stroke="#1a2c0c" stroke-width="11" fill="none" stroke-linecap="round"/>
+            <path d="M1384,325 C 1420,342 1440,378 1448,415"
+              stroke="#2c4618" stroke-width="6.5" fill="none" stroke-linecap="round"/>
+            <path d="M1384,325 C 1420,342 1440,378 1448,415"
+              stroke="#4c6e26" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+            <!-- Branch R-B — curls toward chip B -->
+            <path d="M1358,492 C 1316,510 1296,548 1288,590"
+              stroke="#0a1506" stroke-width="16" fill="none" stroke-linecap="round"/>
+            <path d="M1358,492 C 1316,510 1296,548 1288,590"
+              stroke="#1a2c0c" stroke-width="11" fill="none" stroke-linecap="round"/>
+            <path d="M1358,492 C 1316,510 1296,548 1288,590"
+              stroke="#2c4618" stroke-width="6.5" fill="none" stroke-linecap="round"/>
+            <path d="M1358,492 C 1316,510 1296,548 1288,590"
+              stroke="#4c6e26" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+            <!-- Branch R-B tendril -->
+            <path d="M1296,548 C 1330,562 1348,595 1356,628"
+              stroke="#0a1506" stroke-width="10" fill="none" stroke-linecap="round"/>
+            <path d="M1296,548 C 1330,562 1348,595 1356,628"
+              stroke="#1a2c0c" stroke-width="7"  fill="none" stroke-linecap="round"/>
+            <path d="M1296,548 C 1330,562 1348,595 1356,628"
+              stroke="#2c4618" stroke-width="4"  fill="none" stroke-linecap="round"/>
+            <path d="M1296,548 C 1330,562 1348,595 1356,628"
+              stroke="#4c6e26" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.55"/>
+            <!-- Branch R-C -->
+            <path d="M1332,668 C 1372,685 1392,720 1400,758"
+              stroke="#0a1506" stroke-width="14" fill="none" stroke-linecap="round"/>
+            <path d="M1332,668 C 1372,685 1392,720 1400,758"
+              stroke="#1a2c0c" stroke-width="9.5" fill="none" stroke-linecap="round"/>
+            <path d="M1332,668 C 1372,685 1392,720 1400,758"
+              stroke="#2c4618" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+            <path d="M1332,668 C 1372,685 1392,720 1400,758"
+              stroke="#4c6e26" stroke-width="2"   fill="none" stroke-linecap="round" opacity="0.55"/>
           </g>
 
-          <!-- TOP EDGE TENDRILS — drooping down from top -->
-          <g fill="none">
-            <path d="M480,0 Q462,48 478,92 Q492,132 468,172 Q448,208 472,245"
-              stroke="#1a2e12" stroke-width="4" stroke-linecap="round" opacity="0.82"/>
-            <path d="M480,0 Q462,48 478,92 Q492,132 468,172 Q448,208 472,245"
-              stroke="#4c6e30" stroke-width="1.6" stroke-linecap="round" opacity="0.38"/>
-            <path d="M478,92 Q512,104 528,126" stroke="#1e3212" stroke-width="2.8" stroke-linecap="round" opacity="0.78"/>
-            <path d="M468,172 Q504,183 518,205" stroke="#1e3212" stroke-width="2.4" stroke-linecap="round" opacity="0.72"/>
+          <!-- ── TOP-EDGE TENDRILS — drooping down ── -->
+          <g filter="url(#organic)">
+            <!-- Tendril T1 -->
+            <path d="M425,0 C 412,55 432,105 416,162 C 400,215 422,262 406,318"
+              stroke="#0a1506" stroke-width="18" fill="none" stroke-linecap="round"/>
+            <path d="M425,0 C 412,55 432,105 416,162 C 400,215 422,262 406,318"
+              stroke="#1a2c0c" stroke-width="13" fill="none" stroke-linecap="round"/>
+            <path d="M425,0 C 412,55 432,105 416,162 C 400,215 422,262 406,318"
+              stroke="#2c4618" stroke-width="8"  fill="none" stroke-linecap="round"/>
+            <path d="M425,0 C 412,55 432,105 416,162 C 400,215 422,262 406,318"
+              stroke="#4c6e26" stroke-width="3"  fill="none" stroke-linecap="round" opacity="0.6"/>
+            <!-- T1 side branch -->
+            <path d="M432,105 C 462,118 480,145 488,178"
+              stroke="#0a1506" stroke-width="10" fill="none" stroke-linecap="round"/>
+            <path d="M432,105 C 462,118 480,145 488,178"
+              stroke="#1a2c0c" stroke-width="7"  fill="none" stroke-linecap="round"/>
+            <path d="M432,105 C 462,118 480,145 488,178"
+              stroke="#2c4618" stroke-width="4"  fill="none" stroke-linecap="round"/>
+            <path d="M432,105 C 462,118 480,145 488,178"
+              stroke="#4c6e26" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.55"/>
 
-            <path d="M880,0 Q862,48 884,90 Q902,128 880,165 Q860,198 882,238"
-              stroke="#1a2e12" stroke-width="3.8" stroke-linecap="round" opacity="0.8"/>
-            <path d="M880,0 Q862,48 884,90 Q902,128 880,165 Q860,198 882,238"
-              stroke="#4c6e30" stroke-width="1.5" stroke-linecap="round" opacity="0.36"/>
-            <path d="M884,90 Q916,104 930,128" stroke="#1e3212" stroke-width="2.5" stroke-linecap="round" opacity="0.75"/>
-            <path d="M880,165 Q848,178 838,202" stroke="#1e3212" stroke-width="2.2" stroke-linecap="round" opacity="0.7"/>
+            <!-- Tendril T2 -->
+            <path d="M715,0 C 702,48 720,95 705,148 C 690,200 710,248 694,302"
+              stroke="#0a1506" stroke-width="16" fill="none" stroke-linecap="round"/>
+            <path d="M715,0 C 702,48 720,95 705,148 C 690,200 710,248 694,302"
+              stroke="#1a2c0c" stroke-width="11" fill="none" stroke-linecap="round"/>
+            <path d="M715,0 C 702,48 720,95 705,148 C 690,200 710,248 694,302"
+              stroke="#2c4618" stroke-width="6.5" fill="none" stroke-linecap="round"/>
+            <path d="M715,0 C 702,48 720,95 705,148 C 690,200 710,248 694,302"
+              stroke="#4c6e26" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+            <path d="M705,148 C 732,162 748,188 755,218"
+              stroke="#0a1506" stroke-width="10" fill="none" stroke-linecap="round"/>
+            <path d="M705,148 C 732,162 748,188 755,218"
+              stroke="#1a2c0c" stroke-width="7"  fill="none" stroke-linecap="round"/>
+            <path d="M705,148 C 732,162 748,188 755,218"
+              stroke="#2c4618" stroke-width="4"  fill="none" stroke-linecap="round"/>
+            <path d="M705,148 C 732,162 748,188 755,218"
+              stroke="#4c6e26" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.55"/>
 
-            <path d="M1160,0 Q1148,38 1162,72 Q1174,105 1158,138"
-              stroke="#1a2e12" stroke-width="3.2" stroke-linecap="round" opacity="0.78"/>
-            <path d="M1162,72 Q1188,82 1200,102" stroke="#1e3212" stroke-width="2.2" stroke-linecap="round" opacity="0.72"/>
-
-            <path d="M680,0 Q668,30 678,60" stroke="#1a2e12" stroke-width="2.8" stroke-linecap="round" opacity="0.72"/>
+            <!-- Tendril T3 -->
+            <path d="M992,0 C 980,44 998,88 984,138 C 970,185 988,232 972,282"
+              stroke="#0a1506" stroke-width="14" fill="none" stroke-linecap="round"/>
+            <path d="M992,0 C 980,44 998,88 984,138 C 970,185 988,232 972,282"
+              stroke="#1a2c0c" stroke-width="9.5" fill="none" stroke-linecap="round"/>
+            <path d="M992,0 C 980,44 998,88 984,138 C 970,185 988,232 972,282"
+              stroke="#2c4618" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+            <path d="M992,0 C 980,44 998,88 984,138 C 970,185 988,232 972,282"
+              stroke="#4c6e26" stroke-width="2"   fill="none" stroke-linecap="round" opacity="0.55"/>
           </g>
 
-          <!-- BOTTOM EDGE GROWTH — rising from bottom -->
-          <g fill="none">
-            <path d="M300,900 Q312,862 290,822 Q272,785 298,748 Q320,716 308,678"
-              stroke="#1a2e12" stroke-width="4.5" stroke-linecap="round" opacity="0.85"/>
-            <path d="M300,900 Q312,862 290,822 Q272,785 298,748 Q320,716 308,678"
-              stroke="#4c6e30" stroke-width="1.8" stroke-linecap="round" opacity="0.38"/>
-            <path d="M290,822 Q258,832 245,858" stroke="#1e3212" stroke-width="3" stroke-linecap="round" opacity="0.78"/>
-            <path d="M298,748 Q268,758 256,782" stroke="#1e3212" stroke-width="2.5" stroke-linecap="round" opacity="0.74"/>
+          <!-- ── BOTTOM-EDGE GROWTH ── -->
+          <g filter="url(#organic)">
+            <!-- Growth B1 -->
+            <path d="M320,900 C 335,858 318,818 332,778 C 345,738 326,700 342,658"
+              stroke="#0a1506" stroke-width="18" fill="none" stroke-linecap="round"/>
+            <path d="M320,900 C 335,858 318,818 332,778 C 345,738 326,700 342,658"
+              stroke="#1a2c0c" stroke-width="13" fill="none" stroke-linecap="round"/>
+            <path d="M320,900 C 335,858 318,818 332,778 C 345,738 326,700 342,658"
+              stroke="#2c4618" stroke-width="8"  fill="none" stroke-linecap="round"/>
+            <path d="M320,900 C 335,858 318,818 332,778 C 345,738 326,700 342,658"
+              stroke="#4c6e26" stroke-width="3"  fill="none" stroke-linecap="round" opacity="0.6"/>
+            <path d="M318,818 C 285,830 268,858 262,890"
+              stroke="#0a1506" stroke-width="10" fill="none" stroke-linecap="round"/>
+            <path d="M318,818 C 285,830 268,858 262,890"
+              stroke="#1a2c0c" stroke-width="7"  fill="none" stroke-linecap="round"/>
+            <path d="M318,818 C 285,830 268,858 262,890"
+              stroke="#2c4618" stroke-width="4"  fill="none" stroke-linecap="round"/>
+            <path d="M318,818 C 285,830 268,858 262,890"
+              stroke="#4c6e26" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.55"/>
 
-            <path d="M1020,900 Q1035,862 1018,822 Q1005,785 1028,748 Q1048,716 1035,678"
-              stroke="#1a2e12" stroke-width="4" stroke-linecap="round" opacity="0.82"/>
-            <path d="M1020,900 Q1035,862 1018,822 Q1005,785 1028,748 Q1048,716 1035,678"
-              stroke="#4c6e30" stroke-width="1.6" stroke-linecap="round" opacity="0.36"/>
-            <path d="M1018,822 Q1052,830 1065,855" stroke="#1e3212" stroke-width="2.8" stroke-linecap="round" opacity="0.76"/>
-
-            <path d="M580,900 Q594,870 578,845 Q564,820 582,795"
-              stroke="#1a2e12" stroke-width="3.5" stroke-linecap="round" opacity="0.8"/>
+            <!-- Growth B2 -->
+            <path d="M875,900 C 888,860 872,822 885,782 C 898,742 880,705 895,662"
+              stroke="#0a1506" stroke-width="16" fill="none" stroke-linecap="round"/>
+            <path d="M875,900 C 888,860 872,822 885,782 C 898,742 880,705 895,662"
+              stroke="#1a2c0c" stroke-width="11" fill="none" stroke-linecap="round"/>
+            <path d="M875,900 C 888,860 872,822 885,782 C 898,742 880,705 895,662"
+              stroke="#2c4618" stroke-width="6.5" fill="none" stroke-linecap="round"/>
+            <path d="M875,900 C 888,860 872,822 885,782 C 898,742 880,705 895,662"
+              stroke="#4c6e26" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+            <path d="M872,822 C 840,835 825,862 818,895"
+              stroke="#0a1506" stroke-width="10" fill="none" stroke-linecap="round"/>
+            <path d="M872,822 C 840,835 825,862 818,895"
+              stroke="#1a2c0c" stroke-width="7"  fill="none" stroke-linecap="round"/>
+            <path d="M872,822 C 840,835 825,862 818,895"
+              stroke="#2c4618" stroke-width="4"  fill="none" stroke-linecap="round"/>
+            <path d="M872,822 C 840,835 825,862 818,895"
+              stroke="#4c6e26" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.55"/>
           </g>
 
-          <!-- CROSS-CREEPERS — vines crawling across the board middle -->
-          <g fill="none">
-            <!-- Horizontal creeper left to center -->
-            <path d="M0,480 Q85,468 165,488 Q240,506 318,492 Q398,478 465,498 Q530,515 580,505"
-              stroke="#1a2e12" stroke-width="3.5" stroke-linecap="round" opacity="0.72"/>
-            <path d="M0,480 Q85,468 165,488 Q240,506 318,492 Q398,478 465,498 Q530,515 580,505"
-              stroke="#364e22" stroke-width="1.4" stroke-linecap="round" opacity="0.38"/>
-
-            <!-- Horizontal creeper right to center -->
-            <path d="M1400,560 Q1318,548 1238,565 Q1162,580 1090,562 Q1018,546 952,566"
-              stroke="#1a2e12" stroke-width="3.2" stroke-linecap="round" opacity="0.7"/>
-            <path d="M1400,560 Q1318,548 1238,565 Q1162,580 1090,562 Q1018,546 952,566"
-              stroke="#364e22" stroke-width="1.3" stroke-linecap="round" opacity="0.35"/>
+          <!-- ── CROSS-CREEPER — crawls left-to-right across the middle ── -->
+          <g filter="url(#organic)">
+            <path d="M0,505 C 95,490 188,512 285,498 C 382,484 465,508 555,495 C 620,486 665,502 708,496"
+              stroke="#0a1506" stroke-width="14" fill="none" stroke-linecap="round"/>
+            <path d="M0,505 C 95,490 188,512 285,498 C 382,484 465,508 555,495 C 620,486 665,502 708,496"
+              stroke="#1a2c0c" stroke-width="9.5" fill="none" stroke-linecap="round"/>
+            <path d="M0,505 C 95,490 188,512 285,498 C 382,484 465,508 555,495 C 620,486 665,502 708,496"
+              stroke="#2c4618" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+            <path d="M0,505 C 95,490 188,512 285,498 C 382,484 465,508 555,495 C 620,486 665,502 708,496"
+              stroke="#4c6e26" stroke-width="2"   fill="none" stroke-linecap="round" opacity="0.55"/>
+            <!-- Right-side cross creeper -->
+            <path d="M1400,578 C 1308,562 1215,584 1122,570 C 1030,556 950,578 880,564"
+              stroke="#0a1506" stroke-width="14" fill="none" stroke-linecap="round"/>
+            <path d="M1400,578 C 1308,562 1215,584 1122,570 C 1030,556 950,578 880,564"
+              stroke="#1a2c0c" stroke-width="9.5" fill="none" stroke-linecap="round"/>
+            <path d="M1400,578 C 1308,562 1215,584 1122,570 C 1030,556 950,578 880,564"
+              stroke="#2c4618" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+            <path d="M1400,578 C 1308,562 1215,584 1122,570 C 1030,556 950,578 880,564"
+              stroke="#4c6e26" stroke-width="2"   fill="none" stroke-linecap="round" opacity="0.55"/>
           </g>
 
-          <!-- LEAF NODES — at vine junctions and tips -->
-          <g opacity="0.82">
-            <!-- Left vine nodes -->
-            <ellipse cx="100" cy="375" rx="10" ry="5.5" fill="#2d4a1e" transform="rotate(-38 100 375)"/>
-            <ellipse cx="126" cy="458" rx="9" ry="5" fill="#364e22" transform="rotate(-25 126 458)"/>
-            <ellipse cx="158" cy="556" rx="9.5" ry="5.2" fill="#2d4a1e" transform="rotate(-42 158 556)"/>
-            <ellipse cx="172" cy="645" rx="8.5" ry="4.8" fill="#364e22" transform="rotate(-30 172 645)"/>
-            <ellipse cx="204" cy="760" rx="8" ry="4.5" fill="#2d4a1e" transform="rotate(-20 204 760)"/>
-            <!-- Small leaf dots on branches -->
-            <circle cx="52" cy="258" r="4.5" fill="#2d4a1e"/>
-            <circle cx="74" cy="508" r="3.5" fill="#364e22"/>
-            <circle cx="118" cy="692" r="3.8" fill="#2d4a1e"/>
+          <!-- ════════════════════════════════════
+               LAYER 4 — LEAVES
+               Proper leaf silhouettes at every node
+               ════════════════════════════════════ -->
+          <g>
+            <!-- Left trunk nodes — filled leaf silhouettes -->
+            <!-- Node at 258: leaf pointing left -->
+            <path d="M50,258 C 36,248 22,240 18,250 C 14,260 28,272 50,258 Z" fill="#1e3810"/>
+            <path d="M50,258 C 36,248 22,240 18,250 C 14,260 28,272 50,258 Z" fill="#2c4e18" opacity="0.5"/>
+            <!-- Node at 418 -->
+            <path d="M84,418 C 65,406 48,400 45,412 C 42,424 62,436 84,418 Z" fill="#1e3810"/>
+            <path d="M84,418 C 65,406 48,400 45,412 C 42,424 62,436 84,418 Z" fill="#2c4e18" opacity="0.5"/>
+            <!-- Node at 588 -->
+            <path d="M138,588 C 118,576 100,570 98,582 C 96,594 118,606 138,588 Z" fill="#1e3810"/>
+            <path d="M138,588 C 118,576 100,570 98,582 C 96,594 118,606 138,588 Z" fill="#2c4e18" opacity="0.5"/>
+            <!-- Node at 765 -->
+            <path d="M178,765 C 158,754 140,748 138,760 C 136,772 158,784 178,765 Z" fill="#1e3810"/>
+            <path d="M178,765 C 158,754 140,748 138,760 C 136,772 158,784 178,765 Z" fill="#2c4e18" opacity="0.5"/>
+            <!-- Additional small leaves on branches -->
+            <ellipse cx="50"  cy="258" rx="14" ry="7" fill="#1e3810" transform="rotate(-42 50 258)"  opacity="0.8"/>
+            <ellipse cx="84"  cy="418" rx="13" ry="6.5" fill="#1e3810" transform="rotate(-28 84 418)"  opacity="0.8"/>
+            <ellipse cx="138" cy="588" rx="14" ry="7" fill="#1e3810" transform="rotate(-38 138 588)" opacity="0.8"/>
+            <ellipse cx="178" cy="765" rx="12" ry="6" fill="#1e3810" transform="rotate(-22 178 765)" opacity="0.8"/>
+            <!-- Left secondary nodes -->
+            <ellipse cx="215" cy="102" rx="11" ry="5.5" fill="#1e3810" transform="rotate(20 215 102)"  opacity="0.75"/>
+            <ellipse cx="198" cy="158" rx="10" ry="5"   fill="#1a3510" transform="rotate(12 198 158)"  opacity="0.75"/>
+            <ellipse cx="205" cy="258" rx="10" ry="5"   fill="#1e3810" transform="rotate(-15 205 258)" opacity="0.75"/>
 
-            <!-- Right vine nodes -->
-            <ellipse cx="1346" cy="438" rx="10" ry="5.5" fill="#2d4a1e" transform="rotate(32 1346 438)"/>
-            <ellipse cx="1332" cy="535" rx="9" ry="5" fill="#364e22" transform="rotate(22 1332 535)"/>
-            <ellipse cx="1316" cy="652" rx="9.5" ry="5.2" fill="#2d4a1e" transform="rotate(38 1316 652)"/>
-            <ellipse cx="1318" cy="755" rx="8" ry="4.5" fill="#364e22" transform="rotate(18 1318 755)"/>
-            <circle cx="1378" cy="328" r="4.5" fill="#2d4a1e"/>
-            <circle cx="1295" cy="480" r="3.8" fill="#364e22"/>
+            <!-- Right trunk nodes -->
+            <ellipse cx="1384" cy="325" rx="14" ry="7"   fill="#1e3810" transform="rotate(40 1384 325)"  opacity="0.82"/>
+            <ellipse cx="1358" cy="492" rx="13" ry="6.5" fill="#1e3810" transform="rotate(28 1358 492)"  opacity="0.82"/>
+            <ellipse cx="1332" cy="668" rx="14" ry="7"   fill="#1e3810" transform="rotate(35 1332 668)"  opacity="0.82"/>
+            <path d="M1358,492 C 1374,480 1388,472 1392,484 C 1396,496 1380,508 1358,492 Z" fill="#1e3810"/>
+            <path d="M1358,492 C 1374,480 1388,472 1392,484 C 1396,496 1380,508 1358,492 Z" fill="#2c4e18" opacity="0.5"/>
 
             <!-- Top tendril nodes -->
-            <ellipse cx="478" cy="92" rx="7" ry="4" fill="#2d4a1e" transform="rotate(-15 478 92)"/>
-            <ellipse cx="468" cy="172" rx="6.5" ry="3.5" fill="#364e22" transform="rotate(-10 468 172)"/>
-            <ellipse cx="472" cy="245" rx="6" ry="3.2" fill="#2d4a1e" transform="rotate(-5 472 245)"/>
-            <ellipse cx="884" cy="90" rx="7" ry="4" fill="#2d4a1e" transform="rotate(15 884 90)"/>
-            <ellipse cx="880" cy="165" rx="6.5" ry="3.5" fill="#364e22" transform="rotate(8 880 165)"/>
-            <circle cx="225" cy="88" r="4" fill="#364e22"/>
-            <circle cx="220" cy="242" r="3.5" fill="#2d4a1e"/>
+            <ellipse cx="432"  cy="105" rx="11" ry="5.5" fill="#1e3810" transform="rotate(-18 432 105)"  opacity="0.78"/>
+            <ellipse cx="416"  cy="162" rx="10" ry="5"   fill="#1a3510" transform="rotate(-10 416 162)"  opacity="0.78"/>
+            <ellipse cx="705"  cy="148" rx="11" ry="5.5" fill="#1e3810" transform="rotate(15 705 148)"   opacity="0.78"/>
+            <ellipse cx="984"  cy="138" rx="10" ry="5"   fill="#1e3810" transform="rotate(-12 984 138)"  opacity="0.75"/>
+
+            <!-- Bottom growth nodes -->
+            <ellipse cx="332"  cy="778" rx="11" ry="5.5" fill="#1e3810" transform="rotate(-20 332 778)"  opacity="0.8"/>
+            <ellipse cx="885"  cy="782" rx="11" ry="5.5" fill="#1e3810" transform="rotate(18 885 782)"   opacity="0.8"/>
+
+            <!-- Scattered fallen leaves on the board surface -->
+            <ellipse cx="620"  cy="340" rx="9"  ry="4.5" fill="#1a3010" transform="rotate(52 620 340)"   opacity="0.55"/>
+            <ellipse cx="1045" cy="480" rx="8"  ry="4"   fill="#172c0e" transform="rotate(-38 1045 480)"  opacity="0.52"/>
+            <ellipse cx="780"  cy="720" rx="9"  ry="4.5" fill="#1a3010" transform="rotate(28 780 720)"   opacity="0.55"/>
+            <ellipse cx="500"  cy="215" rx="7.5" ry="3.8" fill="#172c0e" transform="rotate(-22 500 215)"  opacity="0.5"/>
+            <ellipse cx="1165" cy="680" rx="8"  ry="4"   fill="#1a3010" transform="rotate(45 1165 680)"  opacity="0.5"/>
+            <ellipse cx="350"  cy="545" rx="7"  ry="3.5" fill="#172c0e" transform="rotate(-60 350 545)"  opacity="0.48"/>
           </g>
 
-          <!-- Small dead leaves — scattered on the board -->
-          <g opacity="0.5">
-            <ellipse cx="340" cy="305" rx="5" ry="2.8" fill="#1e3212" transform="rotate(45 340 305)"/>
-            <ellipse cx="680" cy="520" rx="4.5" ry="2.5" fill="#243818" transform="rotate(-30 680 520)"/>
-            <ellipse cx="1000" cy="350" rx="5" ry="2.8" fill="#1e3212" transform="rotate(60 1000 350)"/>
-            <ellipse cx="820" cy="740" rx="4" ry="2.2" fill="#243818" transform="rotate(-50 820 740)"/>
-            <ellipse cx="560" cy="180" rx="4.5" ry="2.5" fill="#1e3212" transform="rotate(25 560 180)"/>
-          </g>
+          <!-- ════════════════════════════════════
+               LAYER 5 — OVERLAYS & ATMOSPHERE
+               ════════════════════════════════════ -->
 
-          <!-- Vignette -->
+          <!-- Vignette — edges consumed -->
           <rect x="0" y="0" width="1400" height="900" fill="url(#vignette)"/>
 
-          <!-- Central pulse glow — circuit still lives -->
-          <ellipse cx="700" cy="450" rx="360" ry="260" fill="rgba(10,156,98,0.032)">
-            <animate attributeName="rx" values="360;405;360" dur="5s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="1;1.9;1" dur="5s" repeatCount="indefinite"/>
+          <!-- Central heartbeat — the board still lives -->
+          <ellipse cx="700" cy="450" rx="380" ry="270" fill="rgba(10,148,98,0.028)">
+            <animate attributeName="rx" values="380;425;380" dur="5s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="1;2;1" dur="5s" repeatCount="indefinite"/>
           </ellipse>
         </svg>
       </div>
