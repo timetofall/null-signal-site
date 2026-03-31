@@ -773,7 +773,6 @@ a.nav-logo:hover {
   background: var(--panel-solid);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  font-family: var(--font-display);
 }
 
 .intro-inner {
@@ -791,10 +790,12 @@ a.nav-logo:hover {
 }
 
 .intro p {
+  font-family: var(--font-body);
   color: var(--text-muted);
-  font-weight: 400;
-  font-size: 1.05rem;
-  line-height: 1.65;
+  font-weight: 500;
+  font-size: 1.12rem;
+  line-height: 1.72;
+  letter-spacing: 0.02em;
 }
 
 .intro p + p {
@@ -842,14 +843,13 @@ a.nav-logo:hover {
   justify-content: center;
   padding: clamp(2rem, 5vw, 4rem);
   background: var(--panel-solid);
-  font-family: var(--font-display);
 }
 
 .photo-split__label {
-  font-family: var(--font-display);
-  font-size: 0.62rem;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   color: var(--rust);
   margin-bottom: 0.75rem;
 }
@@ -864,10 +864,13 @@ a.nav-logo:hover {
 }
 
 .photo-split p {
+  font-family: var(--font-body);
   color: var(--text-muted);
-  font-weight: 400;
+  font-weight: 500;
+  font-size: 1.05rem;
   max-width: 32rem;
-  line-height: 1.6;
+  line-height: 1.72;
+  letter-spacing: 0.02em;
 }
 
 /* ----- Inner pages ----- */
@@ -1145,10 +1148,10 @@ a.nav-logo:hover {
 .footer-logo span { color: var(--accent); }
 
 .footer-copy {
-  font-family: var(--font-display);
-  font-size: 0.58rem;
-  font-weight: 400;
-  letter-spacing: 0.1em;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   color: var(--text-muted);
 }
 
@@ -1156,11 +1159,11 @@ a.nav-logo:hover {
   margin-top: 1.5rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--line);
-  font-family: var(--font-display);
-  font-size: 0.55rem;
-  font-weight: 400;
-  line-height: 1.75;
-  letter-spacing: 0.06em;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 500;
+  line-height: 1.78;
+  letter-spacing: 0.02em;
   color: rgba(180, 190, 170, 0.45);
   max-width: 52rem;
 }
