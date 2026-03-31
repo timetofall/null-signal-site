@@ -673,10 +673,10 @@ a.nav-logo:hover {
 }
 
 .btn {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   padding: 0.9rem 1.75rem;
   border: none;
   cursor: pointer;
@@ -730,36 +730,49 @@ a.nav-logo:hover {
 
 .steam-icon {
   position: relative;
-  width: 0.95rem;
-  height: 0.95rem;
-  border: 2px solid currentColor;
+  width: 1.08rem;
+  height: 1.08rem;
+  background: rgba(8, 12, 18, 0.55);
+  border: 1.5px solid currentColor;
   border-radius: 50%;
-  display: inline-block;
-  opacity: 0.95;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.98;
 }
 
-.steam-icon::before {
-  content: "";
+.steam-icon__joint {
   position: absolute;
-  width: 0.2rem;
-  height: 0.2rem;
-  border: 2px solid currentColor;
+  left: 0.14rem;
+  bottom: 0.16rem;
+  width: 0.36rem;
+  height: 0.36rem;
+  border: 1.5px solid currentColor;
   border-radius: 50%;
-  top: -0.18rem;
-  right: -0.12rem;
+  background: rgba(8, 12, 18, 0.95);
 }
 
-.steam-icon::after {
-  content: "";
+.steam-icon__arm {
   position: absolute;
   width: 0.5rem;
-  height: 2px;
+  height: 0.1rem;
   background: currentColor;
-  border-radius: 2px;
-  transform: rotate(-32deg);
+  border-radius: 999px;
+  left: 0.36rem;
+  top: 0.42rem;
+  transform: rotate(-26deg);
   transform-origin: left center;
-  top: 0.05rem;
-  right: 0.03rem;
+}
+
+.steam-icon__hub {
+  position: absolute;
+  right: 0.1rem;
+  top: 0.11rem;
+  width: 0.26rem;
+  height: 0.26rem;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  background: rgba(8, 12, 18, 0.95);
 }
 
 .hero-caption {
