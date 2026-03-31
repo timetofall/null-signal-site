@@ -159,6 +159,7 @@ a.nav-logo:hover {
   display: block;
   width: 100%;
   height: auto;
+  mix-blend-mode: multiply;
   animation: hero-glitch-logo-main 9.75s steps(1, end) infinite;
   will-change: transform, filter;
 }
@@ -169,6 +170,7 @@ a.nav-logo:hover {
   position: absolute;
   inset: 0;
   background: url("images/null-signal-logo.png") center / contain no-repeat;
+  mix-blend-mode: multiply;
   pointer-events: none;
   z-index: 2;
   opacity: 0;
