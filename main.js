@@ -1,5 +1,33 @@
 // Null Signal — single-page site
 
+(function initHeroVideo() {
+  const video = document.querySelector('.hero-stack__video[data-src]');
+  if (!video) return;
+
+  const src = video.dataset.src;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData = typeof navigator !== 'undefined' && Boolean(navigator.connection?.saveData);
+
+  if (reducedMotion || saveData) {
+    video.removeAttribute('data-src');
+    return;
+  }
+
+  const attach = () => {
+    video.setAttribute('fetchpriority', 'low');
+    video.src = src;
+    video.removeAttribute('data-src');
+    video.load();
+    video.play().catch(() => {});
+  };
+
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => attach(), { timeout: 2500 });
+  } else {
+    window.addEventListener('load', attach, { once: true });
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   document.body.style.opacity = '0';
   document.body.style.transition = 'opacity 0.45s ease';

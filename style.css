@@ -116,6 +116,7 @@ a.nav-logo:hover {
   position: absolute;
   inset: 0;
   z-index: 0;
+  background: #060806;
 }
 
 .hero-stack__video {
@@ -634,6 +635,10 @@ a.nav-logo:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-stack__video {
+    display: none;
+  }
+
   .glitch__main {
     animation: none;
     text-shadow:

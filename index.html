@@ -4,8 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Null Signal</title>
-  <link rel="stylesheet" href="style.css?v=31" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css?v=32" />
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="main.js?v=1" defer></script>
 </head>
 <body>
 
@@ -19,12 +22,12 @@
       <div class="hero-stack" aria-hidden="true">
         <video
           class="hero-stack__video"
-          src="images/hero-background.mp4"
+          data-src="images/hero-background.mp4"
           autoplay
           muted
           loop
           playsinline
-          preload="auto"
+          preload="none"
         ></video>
         <div class="hero-stack__scrim"></div>
       </div>
@@ -155,7 +158,5 @@
       <p class="footer-credits">Null Signal. Feature imagery on this page is placeholder for development.</p>
     </div>
   </footer>
-
-  <script src="main.js"></script>
 </body>
 </html>
