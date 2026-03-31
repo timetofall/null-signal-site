@@ -675,6 +675,7 @@ a.nav-logo:hover {
 .btn {
   font-family: var(--font-mono);
   font-size: 0.68rem;
+  font-weight: 700;
   letter-spacing: 0.16em;
   padding: 0.9rem 1.75rem;
   border: none;
@@ -711,6 +712,9 @@ a.nav-logo:hover {
 }
 
 .btn-steam {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   background: rgba(18, 24, 34, 0.85);
   color: #d7e8ff;
   border: 1px solid rgba(120, 180, 255, 0.45);
@@ -722,6 +726,40 @@ a.nav-logo:hover {
   border-color: rgba(150, 205, 255, 0.72);
   color: #ffffff;
   text-decoration: none;
+}
+
+.steam-icon {
+  position: relative;
+  width: 0.95rem;
+  height: 0.95rem;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.95;
+}
+
+.steam-icon::before {
+  content: "";
+  position: absolute;
+  width: 0.2rem;
+  height: 0.2rem;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  top: -0.18rem;
+  right: -0.12rem;
+}
+
+.steam-icon::after {
+  content: "";
+  position: absolute;
+  width: 0.5rem;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transform: rotate(-32deg);
+  transform-origin: left center;
+  top: 0.05rem;
+  right: 0.03rem;
 }
 
 .hero-caption {
