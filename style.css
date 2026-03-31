@@ -800,11 +800,6 @@ a.nav-logo:hover {
   margin-top: 1.15rem;
 }
 
-.intro em {
-  font-style: italic;
-  color: var(--text);
-}
-
 .intro code {
   font-family: var(--font-mono);
   font-size: 0.9em;
