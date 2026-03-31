@@ -773,6 +773,7 @@ a.nav-logo:hover {
   background: var(--panel-solid);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+  font-family: var(--font-display);
 }
 
 .intro-inner {
@@ -791,8 +792,8 @@ a.nav-logo:hover {
 
 .intro p {
   color: var(--text-muted);
-  font-weight: 300;
-  font-size: 1.1rem;
+  font-weight: 400;
+  font-size: 1.05rem;
   line-height: 1.65;
 }
 
@@ -841,12 +842,14 @@ a.nav-logo:hover {
   justify-content: center;
   padding: clamp(2rem, 5vw, 4rem);
   background: var(--panel-solid);
+  font-family: var(--font-display);
 }
 
 .photo-split__label {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 0.62rem;
-  letter-spacing: 0.25em;
+  font-weight: 700;
+  letter-spacing: 0.22em;
   color: var(--rust);
   margin-bottom: 0.75rem;
 }
@@ -862,8 +865,9 @@ a.nav-logo:hover {
 
 .photo-split p {
   color: var(--text-muted);
-  font-weight: 300;
+  font-weight: 400;
   max-width: 32rem;
+  line-height: 1.6;
 }
 
 /* ----- Inner pages ----- */
@@ -1141,9 +1145,10 @@ a.nav-logo:hover {
 .footer-logo span { color: var(--accent); }
 
 .footer-copy {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 0.58rem;
-  letter-spacing: 0.08em;
+  font-weight: 400;
+  letter-spacing: 0.1em;
   color: var(--text-muted);
 }
 
@@ -1151,10 +1156,11 @@ a.nav-logo:hover {
   margin-top: 1.5rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--line);
-  font-family: var(--font-mono);
-  font-size: 0.52rem;
-  line-height: 1.8;
-  letter-spacing: 0.04em;
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  font-weight: 400;
+  line-height: 1.75;
+  letter-spacing: 0.06em;
   color: rgba(180, 190, 170, 0.45);
   max-width: 52rem;
 }
