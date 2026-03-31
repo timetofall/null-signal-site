@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Null Signal</title>
-  <link rel="stylesheet" href="style.css?v=12" />
+  <link rel="stylesheet" href="style.css?v=13" />
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -20,25 +20,17 @@
 
   <main>
     <section class="hero">
-      <!-- Real photos: vintage PCB under a rust + vine photograph, blended in-browser -->
+      <!-- Hero background video -->
       <div class="hero-stack" aria-hidden="true">
-        <img
-          class="hero-stack__base"
-          src="images/hero-circuit-old.jpg"
-          alt=""
-          width="2000"
-          height="1333"
-          fetchpriority="high"
-          decoding="async"
-        />
-        <img
-          class="hero-stack__vine"
-          src="images/hero-vines-rust.jpg"
-          alt=""
-          width="2000"
-          height="1333"
-          decoding="async"
-        />
+        <video
+          class="hero-stack__video"
+          src="images/hero-background.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+        ></video>
         <div class="hero-stack__scrim"></div>
       </div>
 
@@ -56,7 +48,7 @@
           <a class="btn btn-ghost" href="media.html">MEDIA</a>
         </div>
         <p class="hero-caption">
-          Hero uses real photography: an old wired circuit board beneath a separate shot of vines on rusted metal, multiplied together so the organic layer reads over the hardware.
+          Hero background now uses a looping video for continuous motion behind the title treatment.
         </p>
       </div>
     </section>
