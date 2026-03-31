@@ -74,6 +74,10 @@ a.nav-logo:hover {
 
 .nav-logo span { color: var(--accent); }
 
+.site-nav--solo {
+  justify-content: center;
+}
+
 .site-nav ul {
   list-style: none;
   display: flex;
@@ -772,7 +776,7 @@ a.nav-logo:hover {
 }
 
 .intro-inner {
-  max-width: 44rem;
+  max-width: 52rem;
   margin: 0 auto;
   text-align: center;
 }
@@ -789,6 +793,16 @@ a.nav-logo:hover {
   color: var(--text-muted);
   font-weight: 300;
   font-size: 1.1rem;
+  line-height: 1.65;
+}
+
+.intro p + p {
+  margin-top: 1.15rem;
+}
+
+.intro em {
+  font-style: italic;
+  color: var(--text);
 }
 
 .intro code {

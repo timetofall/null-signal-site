@@ -1,4 +1,4 @@
-// Null Signal — main.js (photo site v6)
+// Null Signal — single-page site
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.style.opacity = '0';
@@ -6,13 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   requestAnimationFrame(() => {
     document.body.style.opacity = '1';
   });
-});
-
-const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-document.querySelectorAll('.site-nav ul a').forEach((link) => {
-  const href = link.getAttribute('href');
-  if (href === currentPage) link.classList.add('active');
-  else link.classList.remove('active');
 });
 
 const revealEls = document.querySelectorAll('.reveal');
