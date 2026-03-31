@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Null Signal</title>
-  <link rel="stylesheet" href="style.css?v=30" />
+  <link rel="stylesheet" href="style.css?v=31" />
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -56,46 +56,93 @@
       </div>
     </section>
 
-    <section class="photo-band">
-      <article class="photo-split reveal">
-        <div class="photo-split__pic">
-          <img
-            src="images/section-circuit.jpg"
-            alt="Close-up of a complex circuit board with components and traces"
-            width="2000"
-            height="1333"
-            loading="lazy"
-            decoding="async"
-          />
+    <section class="features reveal" id="features" aria-labelledby="features-heading">
+      <div class="features__inner">
+        <h2 id="features-heading" class="features__heading">GAME FEATURES</h2>
+        <div class="features__carousel" data-carousel>
+          <button type="button" class="features__arrow features__arrow--prev" data-carousel-prev aria-label="Previous feature">
+            <span aria-hidden="true">&#8249;</span>
+          </button>
+          <div class="features__viewport" data-carousel-viewport>
+            <div class="features__track" data-carousel-track>
+              <article class="features__slide" aria-hidden="false">
+                <div class="features__visual" aria-hidden="true"><span class="features__placeholder-label">Survival</span></div>
+                <div class="features__text">
+                  <p class="features__tag">Survival</p>
+                  <p class="features__blurb">Manage health, stamina, hunger, and thirst. Scavenge resources, harvest trees and bushes, craft tools and weapons, cook food for temporary buffs</p>
+                </div>
+              </article>
+              <article class="features__slide" aria-hidden="true">
+                <div class="features__visual" aria-hidden="true"><span class="features__placeholder-label">Combat</span></div>
+                <div class="features__text">
+                  <p class="features__tag">Combat</p>
+                  <p class="features__blurb">Valheim-style commitment-based melee with 3-hit combos, blocking, dodge rolls with i-frames, ranged weapons (bows, pistols, projectile physics), and status effects (poison, burning, bleeding)</p>
+                </div>
+              </article>
+              <article class="features__slide" aria-hidden="true">
+                <div class="features__visual" aria-hidden="true"><span class="features__placeholder-label">Exploration</span></div>
+                <div class="features__text">
+                  <p class="features__tag">Exploration</p>
+                  <p class="features__blurb">Instanced biome worlds with diverse environments, lootable containers, POIs, and discoverable crafting blueprints</p>
+                </div>
+              </article>
+              <article class="features__slide" aria-hidden="true">
+                <div class="features__visual" aria-hidden="true"><span class="features__placeholder-label">Boss progression</span></div>
+                <div class="features__text">
+                  <p class="features__tag">Boss Progression <span class="features__planned">(planned)</span></p>
+                  <p class="features__blurb">Defeat biome guardians to unlock passage to the next area</p>
+                </div>
+              </article>
+              <article class="features__slide" aria-hidden="true">
+                <div class="features__visual" aria-hidden="true"><span class="features__placeholder-label">Reactive AI</span></div>
+                <div class="features__text">
+                  <p class="features__tag">Reactive AI <span class="features__planned">(planned)</span></p>
+                  <p class="features__blurb">Enemies that adapt to player progress, escalating in aggression and coordination as you grow stronger</p>
+                </div>
+              </article>
+              <article class="features__slide" aria-hidden="true">
+                <div class="features__visual" aria-hidden="true"><span class="features__placeholder-label">Rolled loot</span></div>
+                <div class="features__text">
+                  <p class="features__tag">Rolled Loot <span class="features__planned">(planned)</span></p>
+                  <p class="features__blurb">Weapons and items with randomized stat modifiers, bringing ARPG-style itemization to survival gameplay</p>
+                </div>
+              </article>
+              <article class="features__slide" aria-hidden="true">
+                <div class="features__visual" aria-hidden="true"><span class="features__placeholder-label">AXIS integration</span></div>
+                <div class="features__text">
+                  <p class="features__tag">AXIS Integration</p>
+                  <p class="features__blurb">A risk/reward progression system where deeper AI connection grants abilities but increases surveillance and control</p>
+                </div>
+              </article>
+              <article class="features__slide" aria-hidden="true">
+                <div class="features__visual" aria-hidden="true"><span class="features__placeholder-label">Faction alignment</span></div>
+                <div class="features__text">
+                  <p class="features__tag">Faction Alignment</p>
+                  <p class="features__blurb">Choose sides between competing factions with unique philosophies on AXIS integration</p>
+                </div>
+              </article>
+              <article class="features__slide" aria-hidden="true">
+                <div class="features__visual" aria-hidden="true"><span class="features__placeholder-label">Base building</span></div>
+                <div class="features__text">
+                  <p class="features__tag">Base Building</p>
+                  <p class="features__blurb">Place and customize structures, furniture, campfires, and workbenches with a ghost-preview placement system</p>
+                </div>
+              </article>
+              <article class="features__slide" aria-hidden="true">
+                <div class="features__visual" aria-hidden="true"><span class="features__placeholder-label">Co-op</span></div>
+                <div class="features__text">
+                  <p class="features__tag">Co-op Multiplayer</p>
+                  <p class="features__blurb">LAN/online co-op via FishNet. Single-player runs as auto-host seamlessly</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <button type="button" class="features__arrow features__arrow--next" data-carousel-next aria-label="Next feature">
+            <span aria-hidden="true">&#8250;</span>
+          </button>
         </div>
-        <div class="photo-split__body">
-          <p class="photo-split__label">COMPONENT LAYER</p>
-          <h3>Real boards, real corrosion</h3>
-          <p>
-            Dense PCBs and solder—straight from the camera. This is the “computer” half of the mood: metal, glass, and traces that used to mean something.
-          </p>
-        </div>
-      </article>
-
-      <article class="photo-split reveal">
-        <div class="photo-split__pic">
-          <img
-            src="images/section-industrial.jpg"
-            alt="Overgrown industrial structure with rusty metal walkways"
-            width="2000"
-            height="1333"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-        <div class="photo-split__body">
-          <p class="photo-split__label">RECLAIMED METAL</p>
-          <h3>Rust where walkways used to be</h3>
-          <p>
-            Industrial ruins overtaken by growth—another real frame that sells the same fantasy: systems left running until the world grew through them.
-          </p>
-        </div>
-      </article>
+        <div class="features__dots" data-carousel-dots role="tablist" aria-label="Features"></div>
+      </div>
     </section>
   </main>
 
@@ -105,18 +152,7 @@
         <span class="footer-logo">NULL<span>SIGNAL</span></span>
         <span class="footer-copy">© 2026 · All rights reserved</span>
       </div>
-      <p class="footer-credits">
-        Photography:
-        <a href="https://unsplash.com/photos/close-up-of-an-old-electronic-circuit-board-with-wires-oFTsjMfZ76A" rel="noopener noreferrer">Zulfugar Karimov</a>
-        (vintage wired board),
-        <a href="https://unsplash.com/photos/a-rusted-iron-gate-with-vines-growing-on-it-RxGDNOHkepA" rel="noopener noreferrer">Eric Prouzet</a>
-        (rusted gate with vines),
-        <a href="https://unsplash.com/photos/overgrown-industrial-ruins-with-rusty-metal-walkways-wJcK6IrLlPQ" rel="noopener noreferrer">Jakub Zerdzicki</a>
-        (overgrown industrial ruins),
-        <a href="https://unsplash.com/photos/close-up-of-a-complex-electronic-circuit-board-with-many-components-76wMkjguUEA" rel="noopener noreferrer">Akshat Sharma</a>
-        (detailed circuit board). Licensed under the
-        <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>.
-      </p>
+      <p class="footer-credits">Null Signal. Feature imagery on this page is placeholder for development.</p>
     </div>
   </footer>
 
