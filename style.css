@@ -169,7 +169,7 @@ a.nav-logo:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("images/null-signal-logo.png") center / contain no-repeat;
+  background: url("images/null-signal-logo-cutout.png") center / contain no-repeat;
   mix-blend-mode: multiply;
   pointer-events: none;
   z-index: 2;
