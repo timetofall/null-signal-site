@@ -144,72 +144,6 @@ a.nav-logo:hover {
   align-items: center;
 }
 
-/* Full-width logo + glitch at top; text title + CTAs live in .hero-bottom */
-.hero-logo-glitch {
-  position: relative;
-  display: inline-block;
-  width: min(94vw, 44rem);
-  margin-top: 0.25rem;
-  margin-bottom: 0.35rem;
-}
-
-.hero-logo-glitch__img {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  height: auto;
-  mix-blend-mode: multiply;
-  animation: hero-glitch-logo-main 9.75s steps(1, end) infinite;
-  will-change: transform, filter;
-}
-
-.hero-logo-glitch::before,
-.hero-logo-glitch::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("images/null-signal-logo-alt.png") center / contain no-repeat;
-  mix-blend-mode: multiply;
-  pointer-events: none;
-  z-index: 2;
-  opacity: 0;
-  will-change: transform, opacity, clip-path;
-}
-
-.hero-logo-glitch::before {
-  mix-blend-mode: screen;
-  filter: brightness(1.15) sepia(1) saturate(2.8) hue-rotate(85deg) contrast(1.05);
-  clip-path: polygon(0 0, 100% 0, 100% 38%, 0 38%);
-  animation:
-    hero-glitch-strip-a 9.75s steps(1, end) infinite,
-    hero-glitch-clip-a 9.75s steps(1, end) infinite;
-}
-
-.hero-logo-glitch::after {
-  mix-blend-mode: screen;
-  filter: brightness(1.12) sepia(1) saturate(2.6) hue-rotate(-25deg) contrast(1.05);
-  clip-path: polygon(0 62%, 100% 62%, 100% 100%, 0 100%);
-  animation:
-    hero-glitch-strip-b 9.75s steps(1, end) infinite,
-    hero-glitch-clip-b 9.75s steps(1, end) infinite;
-}
-
-.glitch__cut--logo {
-  left: -1%;
-  right: -1%;
-}
-
-.hero-bottom {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: clamp(0.65rem, 2.2vw, 1.1rem);
-  width: 100%;
-  padding-bottom: env(safe-area-inset-bottom, 0);
-}
-
 .hero-kicker {
   font-family: var(--font-display);
   font-size: clamp(0.75rem, 1.8vw, 0.88rem);
@@ -503,152 +437,6 @@ a.nav-logo:hover {
   }
 }
 
-/* Same timing / motion as hero-glitch-rgb; uses drop-shadow instead of text-shadow */
-@keyframes hero-glitch-logo-main {
-  0%, 9.8%, 100% {
-    filter: drop-shadow(0 0 22px rgba(92, 184, 120, 0.3));
-    transform: translate(0) skewX(0) scaleX(1);
-  }
-  10.4% {
-    filter:
-      drop-shadow(0 0 18px rgba(92, 184, 120, 0.35))
-      drop-shadow(-4px 0 0 rgba(92, 184, 120, 0.55))
-      drop-shadow(4px 0 0 rgba(196, 92, 40, 0.5));
-    transform: translate(-2px) skewX(-2deg) scaleX(1.02);
-  }
-  10.7% {
-    filter:
-      drop-shadow(0 0 14px rgba(92, 184, 120, 0.3))
-      drop-shadow(-12px 0 0 rgba(92, 184, 120, 0.95))
-      drop-shadow(12px 0 0 rgba(196, 92, 40, 0.9))
-      drop-shadow(2px 0 2px rgba(255, 255, 255, 0.5));
-    transform: translate(5px) skewX(3deg) scaleX(1.03);
-  }
-  11% {
-    filter:
-      drop-shadow(10px 0 0 rgba(92, 184, 120, 0.75))
-      drop-shadow(-11px 0 0 rgba(196, 92, 40, 0.82))
-      drop-shadow(-2px -2px 1px rgba(255, 255, 255, 0.4));
-    transform: translate(-6px) skewX(-2.5deg) scaleX(0.99);
-  }
-  11.35% {
-    filter:
-      drop-shadow(-14px 0 1px rgba(92, 184, 120, 0.88))
-      drop-shadow(14px 0 1px rgba(196, 92, 40, 0.85))
-      drop-shadow(0 0 3px rgba(255, 255, 255, 0.5));
-    transform: translate(4px) skewX(2deg);
-  }
-  11.65% {
-    filter:
-      drop-shadow(7px 0 0 rgba(92, 184, 120, 0.6))
-      drop-shadow(-8px 0 0 rgba(196, 92, 40, 0.65))
-      drop-shadow(2px 1px 1px rgba(255, 255, 255, 0.28));
-    transform: translate(-3px) skewX(-1deg);
-  }
-  11.95% {
-    filter:
-      drop-shadow(-5px 0 0 rgba(126, 240, 168, 0.5))
-      drop-shadow(6px 0 0 rgba(255, 154, 106, 0.48));
-    transform: translate(2px) skewX(1.5deg);
-  }
-  12.25% {
-    filter:
-      drop-shadow(0 0 20px rgba(92, 184, 120, 0.28))
-      drop-shadow(3px 0 0 rgba(196, 92, 40, 0.35))
-      drop-shadow(-3px 0 0 rgba(92, 184, 120, 0.32));
-    transform: translate(0) skewX(0);
-  }
-  12.55% {
-    filter: drop-shadow(0 0 22px rgba(92, 184, 120, 0.3));
-    transform: translate(0) scaleX(1);
-  }
-  12.6%, 40.8% {
-    filter: drop-shadow(0 0 22px rgba(92, 184, 120, 0.3));
-    transform: translate(0) skewX(0) scaleX(1);
-  }
-  41.2% {
-    filter:
-      drop-shadow(0 0 20px rgba(92, 184, 120, 0.28))
-      drop-shadow(-3px 0 0 rgba(92, 184, 120, 0.5))
-      drop-shadow(3px 0 0 rgba(196, 92, 40, 0.48));
-    transform: translate(-1px) skewX(-1.5deg);
-  }
-  41.55% {
-    filter:
-      drop-shadow(2px -2px 1px rgba(255, 255, 255, 0.42))
-      drop-shadow(11px 0 0 rgba(92, 184, 120, 0.9))
-      drop-shadow(-11px 0 0 rgba(196, 92, 40, 0.88));
-    transform: translate(5px) skewX(2.5deg) scaleX(1.02);
-  }
-  41.9% {
-    filter:
-      drop-shadow(-1px 2px 0 rgba(126, 240, 168, 0.3))
-      drop-shadow(2px -1px 0 rgba(255, 154, 106, 0.28))
-      drop-shadow(-13px 0 0 rgba(92, 184, 120, 0.8))
-      drop-shadow(13px 0 0 rgba(196, 92, 40, 0.82));
-    transform: translate(-5px) skewX(-3deg);
-  }
-  42.25% {
-    filter:
-      drop-shadow(8px 0 1px rgba(196, 92, 40, 0.7))
-      drop-shadow(-9px 0 1px rgba(92, 184, 120, 0.72));
-    transform: translate(4px) skewX(2deg);
-  }
-  42.6% {
-    filter:
-      drop-shadow(-6px 0 0 rgba(92, 184, 120, 0.55))
-      drop-shadow(7px 0 0 rgba(196, 92, 40, 0.58))
-      drop-shadow(1px 1px 1px rgba(255, 255, 255, 0.3));
-    transform: translate(-2px) skewX(-1deg);
-  }
-  42.95% {
-    filter: drop-shadow(0 0 22px rgba(92, 184, 120, 0.3));
-    transform: translate(0) skewX(0) scaleX(1);
-  }
-  43%, 69.2% {
-    filter: drop-shadow(0 0 22px rgba(92, 184, 120, 0.3));
-    transform: translate(0) skewX(0) scaleX(1);
-  }
-  69.6% {
-    filter:
-      drop-shadow(0 0 20px rgba(92, 184, 120, 0.32))
-      drop-shadow(-5px 0 0 rgba(126, 240, 168, 0.6))
-      drop-shadow(5px 0 0 rgba(255, 154, 106, 0.55));
-    transform: translate(-3px) skewX(-2.5deg) scaleX(1.02);
-  }
-  69.95% {
-    filter:
-      drop-shadow(3px 0 0 rgba(255, 255, 255, 0.5))
-      drop-shadow(-2px 2px 0 rgba(92, 184, 120, 0.35))
-      drop-shadow(-15px 0 2px rgba(92, 184, 120, 0.92))
-      drop-shadow(15px 0 2px rgba(196, 92, 40, 0.9));
-    transform: translate(6px) skewX(3.5deg) scaleX(1.04);
-  }
-  70.3% {
-    filter:
-      drop-shadow(1px -3px 1px rgba(255, 255, 255, 0.38))
-      drop-shadow(13px 0 0 rgba(196, 92, 40, 0.85))
-      drop-shadow(-12px 0 0 rgba(92, 184, 120, 0.88));
-    transform: translate(-7px) skewX(-3deg) scaleX(0.98);
-  }
-  70.65% {
-    filter:
-      drop-shadow(-10px 0 0 rgba(92, 184, 120, 0.7))
-      drop-shadow(11px 0 0 rgba(196, 92, 40, 0.68));
-    transform: translate(5px) skewX(2deg);
-  }
-  71% {
-    filter:
-      drop-shadow(6px 0 0 rgba(126, 240, 168, 0.45))
-      drop-shadow(-6px 0 0 rgba(255, 154, 106, 0.45));
-    transform: translate(-2px) skewX(-1deg);
-  }
-  71.35% {
-    filter: drop-shadow(0 0 22px rgba(92, 184, 120, 0.3));
-    transform: translate(0) skewX(0) scaleX(1);
-  }
-}
-
 @keyframes hero-glitch-strip-a {
   0%, 9.8%, 100% { opacity: 0; transform: translate(0) skewX(0); }
   10.4% { opacity: 0.55; transform: translate(-6px) skewX(-4deg); }
@@ -861,22 +649,6 @@ a.nav-logo:hover {
     opacity: 0;
   }
 
-  .hero-logo-glitch__img {
-    animation: none;
-    filter: drop-shadow(0 0 18px rgba(92, 184, 120, 0.28));
-    transform: none;
-  }
-
-  .hero-logo-glitch::before,
-  .hero-logo-glitch::after {
-    animation: none;
-    opacity: 0;
-  }
-
-  .glitch__cut--logo {
-    animation: none;
-    opacity: 0;
-  }
 }
 
 .hero-lead {
@@ -890,7 +662,8 @@ a.nav-logo:hover {
 }
 
 .hero-actions {
-  margin-top: 0;
+  margin-top: auto;
+  margin-bottom: clamp(1.2rem, 4vh, 2.4rem);
   display: flex;
   flex-wrap: wrap;
   gap: 0.85rem;
